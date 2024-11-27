@@ -1,0 +1,45 @@
+@use "../common/style/var.scss" as *;
+
+.dm-button {
+  font-size: var(--dm-button-font-size, 0.88rem);
+  font-weight: var(--dm-button-font-weight, 500);
+  line-height: var(--dm-button-line-height, 1rem);
+  padding: var(--dm-button-padding, 0.75rem 1.25rem);
+  border-radius: var(--dm-button-border-radius, 1.44rem);
+  text-align: var(--dm-button-text-align, center);
+  min-width: 5rem;
+}
+
+.dm-button-default{
+  @extend .dm-button;
+  color: var(--dm-button-text-color, $dm-background-color-default);
+	background-color: var(--dm-button-background-color, $dm-main-color);
+  cursor: pointer;
+}
+
+.dm-button-disabled{
+  @extend .dm-button;
+  color: var(--dm-button-disabled-text-color, $dm-tertiary-text-color);
+  background-color: var(--dm-button-disabled-background-color, $dm-background-color-disabled);
+  cursor: not-allowed;
+}
+
+.dm-button-plain{
+  @extend .dm-button;
+  color: var(--dm-button-plain-text-color, $dm-main-color);
+  background-color: var(--dm-button-plain-background-color, 'transparent');
+  border: 0.06rem solid var(--dm-button-plain-border-color, $dm-main-color);
+  cursor: pointer;
+}
+
+.dm-button-plain-disabled{
+  @extend .dm-button-plain;
+  color: var(--dm-button-plain-disabled-text-color, #999999);
+  background-color: var(--dm-button-plain-background-color, 'transparent');
+  border: 0.06rem solid var(--dm-button-plain-disabled-border-color, #999999);
+  cursor: not-allowed;
+}
+
+.dm-button-shadow{
+  box-shadow: 0rem 0rem 0.5rem 0.25rem $dm-shadow-color;
+}

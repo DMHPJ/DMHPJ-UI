@@ -1,0 +1,13 @@
+@use "../common/style/var.scss" as *;
+
+.dm-card {
+	width: var(--dm-card-width, auto);
+	height: var(--dm-card-height, auto);
+	background-color: var(--dm-card-background-color, $dm-background-color-default);
+	padding: 1rem;
+	border-radius: 0.63rem;
+}
+
+.dm-card-shadow{
+  box-shadow: 0 0 1rem 0.5rem var(--dm-card-shadow-color, $dm-shadow-color);
+}

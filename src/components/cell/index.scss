@@ -1,0 +1,25 @@
+@use "../common/style/var.scss" as *;
+
+.dm-cell {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  font-size: var(--dm-cell-font-size, 0.88rem);
+  line-height: var(--dm-cell-line-height, 1rem);
+  padding-block: var(--dm-cell-padding-block, 0.75rem);
+  
+	& .dm-cell-left {
+		flex-shrink: 0;
+		color: var(--dm-cell-title-text-color, $dm-secondary-text-color);
+		font-weight: var(--dm-cell-title-font-weight, 500);
+	}
+
+	& .dm-cell-right {
+		flex-grow: 1;
+		word-wrap: break-word;
+		white-space: pre-line;
+    text-align: right;
+		color: var(--dm-cell-title-content-color, $dm-primary-text-color);
+		font-weight: var(--dm-cell-content-font-weight, 400);
+	}
+}

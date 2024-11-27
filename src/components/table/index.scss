@@ -1,0 +1,47 @@
+@use "../common/style/var.scss" as *;
+
+.dm-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  border-radius: 0.63rem;
+  background-color: var(--dm-table-header-background-color, $dm-background-color-default);
+
+  & .dm-table-header{
+    border-radius: 0.63rem;
+    color: var(--dm-table-header-text-color, $dm-main-color);
+    background-color: var(--dm-table-header-background-color, $dm-secondary-color);
+    font-size: var(--dm-table-header-font-size, 0.75rem);
+    font-weight: var(--dm-table-header-font-weight, 500);
+    line-height: var(--dm-table-header-line-height, 0.88rem);
+  }
+
+  & .dm-table-row{
+    color: var(--dm-table-row-text-color, $dm-primary-text-color);
+    background-color: var(--dm-table-row-background-color, $dm-background-color-default);
+    font-size: var(--dm-table-row-font-size, 0.75rem);
+    font-weight: var(--dm-table-row-font-weight, 500);
+    line-height: var(--dm-table-row-line-height, 0.88rem);
+    border-bottom: 0.06rem solid var(--dm-table-row-dividing-line-color, $dm-dividing-line-color);
+  }
+
+  & .dm-table-header{
+    display: inline-flex;
+    min-width: 100%;
+  }
+
+  & .dm-table-row {
+    display: flex;
+    min-width: 100%;
+  }
+
+  & .dm-table-header div,
+  & .dm-table-row div {
+    white-space: nowrap;
+    margin-inline: 1rem;
+    padding-block: 0.75rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
