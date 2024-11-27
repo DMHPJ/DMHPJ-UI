@@ -4,8 +4,21 @@
 	width: var(--dm-card-width, auto);
 	height: var(--dm-card-height, auto);
 	background-color: var(--dm-card-background-color, $dm-background-color-default);
-	padding: 1rem;
 	border-radius: 0.63rem;
+
+	& .dm-card-header{
+		margin-inline: var(--dm-card-header-margin, 1rem);
+		padding-block: var(--dm-card-header-padding, 1rem);
+		border-bottom: 0.06rem solid var(--dm-card-header-border-color, $dm-dividing-line-color);
+		color: var(--dm-card-header-text-color, $dm-primary-text-color);
+		font-size: var(--dm-card-header-font-size, 1rem);
+    font-weight: var(--dm-card-header-font-weight, 500);
+    line-height: var(--dm-card-header-line-height, 1.17rem);
+	}
+
+	& .dm-card-body{
+		padding: var(--dm-card-body-padding, 1rem);
+	}
 }
 
 .dm-card-shadow{

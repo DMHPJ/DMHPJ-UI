@@ -2,7 +2,14 @@
 	<div
 		:class="['dm-card', shadow && 'dm-card-shadow']"
 		:style="{ '--dm-card-width': calcWidth, '--dm-card-height': calcHeight }">
-		<slot></slot>
+		<div class="dm-card-header" v-if="title || $slots.title">
+			<slot name="header">
+				<div>{{ title }}</div>
+			</slot>
+		</div>
+		<div class="dm-card-body">
+			<slot></slot>
+		</div>
 	</div>
 </template>
 <script lang="ts">
