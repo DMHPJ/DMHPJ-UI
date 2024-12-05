@@ -2,10 +2,11 @@ import dmCard from "./components/card/index.vue";
 import dmButton from "./components/button/index.vue";
 import dmTable from "./components/table/index.vue";
 import dmTableColumn from "./components/table-column/index.vue";
+import dmCheckbox from "./components/checkbox/index.vue";
 
 import type { App } from "vue";
 
-const components = [dmCard, dmButton, dmTable, dmTableColumn];
+const components = [dmCard, dmButton, dmTable, dmTableColumn, dmCheckbox];
 
 export function install(app: App) {
   components.forEach((component) => {
@@ -15,4 +16,4 @@ export function install(app: App) {
 
 export default { install };
 
-export { dmCard, dmButton, dmTable, dmTableColumn }
+export { dmCard, dmButton, dmTable, dmTableColumn, dmCheckbox }

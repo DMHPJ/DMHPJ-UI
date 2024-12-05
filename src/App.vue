@@ -1,6 +1,9 @@
 <template>
 	<div class="app">
 		<dm-card title="兜帽虎皮卷的卡片" shadow width="45%" height="50%">
+			<template #header>
+				<div>兜帽虎皮卷的卡片标题</div>
+			</template>
 			<div class="button-group">
 				<dm-button>兜帽虎皮卷的基础按钮</dm-button>
 				<dm-button plain>兜帽虎皮卷的简约按钮</dm-button>
@@ -9,23 +12,26 @@
 			</div>
 			<dm-table :data="testData">
 				<dm-table-column prop="code" label="编号" width="160">
-          <template #cell="{ row, index }">
+          <template #cell="{ row }">
 						<div>{{ row.code }}</div>
 					</template>
         </dm-table-column>
 				<dm-table-column prop="name" label="姓名" minWidth="160"></dm-table-column>
 				<dm-table-column prop="age" label="年龄"></dm-table-column>
 				<dm-table-column prop="remark" label="备注" width="200">
-					<template #cell="{ row, index }">
+					<template #cell="{ row }">
 						<div>{{ row.remark }}</div>
 					</template>
 				</dm-table-column>
       </dm-table>
+			<dm-checkbox v-model="testRef.checked" label="dmhpj" @change="testCheckbox">是否选中</dm-checkbox>
 		</dm-card>
 	</div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 const testData = [
 	{
 		updateTime: "2024-10-29 16:49:00",
@@ -84,6 +90,13 @@ const testData = [
 		remark: "兜帽虎皮卷的表格",
 	},
 ];
+const testRef = ref({
+	checked: false,
+});
+
+const testCheckbox = (val: boolean, event: Event) => {
+	console.log(val, event);
+};
 </script>
 
 <style scoped>
