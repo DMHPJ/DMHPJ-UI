@@ -10,3 +10,9 @@ $dm-secondary-text-color: #666666;
 $dm-tertiary-text-color: #999999;
 
 $dm-dividing-line-color: #EEEEEE;
+
+@mixin flex($aiStyle: center, $jcStyle: flex-start) {
+  display: flex;
+  align-items: $aiStyle;
+  justify-content: $jcStyle;
+}

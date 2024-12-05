@@ -1,0 +1,57 @@
+@use "../common/style/var.scss" as *;
+
+.dm-checkbox {
+	@include flex();
+	font-size: var(--dm-checkbox-font-size, 0.88rem);
+	font-weight: var(--dm-checkbox-font-weight, 500);
+	line-height: var(--dm-checkbox-line-height, 1rem);
+
+	& .dm-checkbox-input {
+		white-space: nowrap;
+		cursor: pointer;
+		outline: none;
+		display: inline-block;
+		line-height: 1;
+		position: relative;
+		vertical-align: middle;
+
+		& .dm-checkbox-show {
+			z-index: 1;
+			width: var(--dm-checkbox-show-size, 0.75rem);
+			height: var(--dm-checkbox-show-size, 0.75rem);
+			position: relative;
+			display: inline-block;
+			border: 1px solid #dcdfe6;
+		}
+
+    & .dm-checkbox-show::after {
+      box-sizing: content-box;
+      content: "";
+      border: 1px solid #ffffff;
+      border-left: 0;
+      border-top: 0;
+      height: 7px;
+      left: 4px;
+      position: absolute;
+      top: 1px;
+      width: 3px;
+      transition: transform 0.15s ease-in 0.05s, -webkit-transform 0.15s ease-in 0.05s;
+      transform-origin: center;
+      transform: rotate(45deg) scaleY(1);
+    }
+
+		& .dm-checkbox-original {
+			position: absolute;
+			width: 0;
+			height: 0;
+			z-index: -1;
+			opacity: 0;
+			outline: none;
+		}
+	}
+}
+
+.is-checked{
+  color: #2965FF;
+  background-color: #2965FF;
+}
