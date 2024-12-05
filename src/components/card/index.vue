@@ -2,7 +2,7 @@
 	<div
 		:class="['dm-card', shadow && 'dm-card-shadow']"
 		:style="{ '--dm-card-width': calcWidth, '--dm-card-height': calcHeight }">
-		<div class="dm-card-header" v-if="title || $slots.title">
+		<div class="dm-card-header" v-if="title || $slots.header">
 			<slot name="header">
 				<div>{{ title }}</div>
 			</slot>
