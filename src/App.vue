@@ -24,13 +24,20 @@
 					</template>
 				</dm-table-column>
       </dm-table>
-			<dm-checkbox v-model="testRef.checked" label="dmhpj" @change="testCheckbox">是否选中</dm-checkbox>
-		</dm-card>
+			<dm-checkbox-group v-model:modelValue="testRef.checkList">
+				<dm-checkbox label="复选框 A"></dm-checkbox>
+				<dm-checkbox label="复选框 B"></dm-checkbox>
+				<dm-checkbox label="复选框 C"></dm-checkbox>
+				<dm-checkbox label="禁用" disabled></dm-checkbox>
+				<dm-checkbox label="选中且禁用" disabled></dm-checkbox>
+			</dm-checkbox-group>
+				<dm-checkbox label="复选框 B" @change="testCheckbox"></dm-checkbox>
+			</dm-card>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const testData = [
 	{
@@ -92,11 +99,17 @@ const testData = [
 ];
 const testRef = ref({
 	checked: false,
+	checkList: ['选中且禁用','复选框 A']
 });
 
 const testCheckbox = (val: boolean, event: Event) => {
-	console.log(val, event);
+	console.log('App Handle Checkbox Change', val, event);
 };
+
+watch(() => testRef.value.checkList, (val) => {
+	console.log('App Watch CheckboxGroup', val);
+})
+
 </script>
 
 <style scoped>

@@ -1,0 +1,6 @@
+@use "../common/style/var.scss" as *;
+
+.dm-checkbox-group{
+  @include flex();
+  column-gap: var(--dm-checkbox-group-column-gap, 1rem);
+}

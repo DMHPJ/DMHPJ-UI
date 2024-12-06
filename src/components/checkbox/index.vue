@@ -1,5 +1,12 @@
 <template>
-	<label class="dm-checkbox">
+	<label
+		class="dm-checkbox"
+		:class="[
+			{ 'is-disabled': isDisabled },
+			{ 'is-bordered': border },
+			{ 'is-checked': isChecked },
+		]"
+		:id="id">
 		<div
 			class="dm-checkbox-input"
 			:class="{
@@ -15,7 +22,7 @@
 				type="checkbox"
 				:aria-hidden="indeterminate ? 'true' : 'false'"
 				:name="name"
-				:disabled="isDisabled"
+				:disabled="!!isDisabled"
 				:true-value="trueLabel"
 				:false-value="falseLabel"
 				v-model="model"
@@ -27,7 +34,7 @@
 				class="dm-checkbox-original"
 				type="checkbox"
 				:aria-hidden="indeterminate ? 'true' : 'false'"
-				:disabled="isDisabled"
+				:disabled="!!isDisabled"
 				:value="label"
 				:name="name"
 				v-model="model"
@@ -42,11 +49,13 @@
 	</label>
 </template>
 <script lang="ts">
-import { computed, defineComponent, inject, nextTick, ref } from "vue";
+import { ComponentInternalInstance, computed, defineComponent, inject, ref } from "vue";
+import { useEmitter } from "../common/utils/emitter";
 
 export default defineComponent({
 	name: "DmCheckbox",
 	props: {
+		id: { type: String, default: "DmCheckbox" },
 		value: { type: [String, Number, Boolean], default: null },
 		label: { type: [String, Number, Boolean], default: null },
 		trueLabel: { type: [String, Number], default: null },
@@ -66,44 +75,31 @@ export default defineComponent({
 			isLimitExceeded: false,
 		});
 
-		const _checkboxGroup = inject("CheckboxGroupContextKey", {
-			store: null,
-			min: 0,
-			max: 0,
-			value: { disabled: false },
-			dispatch: (type: string, event: string, payload: any[]) => {
-				console.log(type, event, payload);
-			},
-		});
-
+		const { dispatch } = useEmitter();
+		const _checkboxGroup = inject("dmCheckboxGroup") as ComponentInternalInstance;
 		const isGroup = computed(() => !!_checkboxGroup);
+
+		const store = computed(() => (_checkboxGroup ? _checkboxGroup.props.modelValue : props.value));
 
 		const model = computed({
 			get() {
-				return props.value ? props.value : data.value.selfModel;
-				// return isGroup.value
-				// 	? _checkboxGroup?.store ?? !props.value
-				// 		? props.value
-				// 		: data.value.selfModel
-				// 	: !props.value
-				// 	? props.value
-				// 	: data.value.selfModel;
+				return isGroup.value ? store.value : props.value ? props.value : data.value.selfModel;
 			},
 
 			set(val: Array<any> | boolean) {
 				if (isGroup.value && typeof val !== "boolean") {
 					data.value.isLimitExceeded = false;
 
-					if (!_checkboxGroup?.min && val.length < _checkboxGroup.min) {
+					if (!_checkboxGroup?.props.min && val.length < (_checkboxGroup.props.min as number)) {
 						data.value.isLimitExceeded = true;
 					}
 
-					if (!_checkboxGroup?.max && val.length > _checkboxGroup.max) {
+					if (!_checkboxGroup?.props.max && val.length > (_checkboxGroup.props.max as number)) {
 						data.value.isLimitExceeded = true;
 					}
 
 					if (!data.value.isLimitExceeded) {
-						_checkboxGroup?.dispatch("DmCheckboxGroup", "input", [val]);
+						dispatch("DmCheckboxGroup", "input", [val]);
 					}
 				}
 				if (typeof val === "boolean") {
@@ -113,19 +109,14 @@ export default defineComponent({
 			},
 		});
 
-		const dmForm = inject("dmForm", { value: { disabled: false } });
-
 		const isLimitDisabled = computed(() => {
 			return false;
 		});
 
 		const isDisabled = computed(() => {
 			return isGroup.value
-				? _checkboxGroup.value.disabled ||
-						props.disabled ||
-						(dmForm.value || {}).disabled ||
-						isLimitDisabled.value
-				: props.disabled || (dmForm.value || {}).disabled;
+				? _checkboxGroup.props.disabled || props.disabled || isLimitDisabled.value
+				: props.disabled;
 		});
 
 		const isChecked = computed(() => {
@@ -148,13 +139,7 @@ export default defineComponent({
 				value = !props.falseLabel ? false : props.falseLabel;
 			}
 			emit("change", value, e);
-			nextTick(() => {
-				if (isGroup.value) {
-					_checkboxGroup?.dispatch("DmCheckboxGroup", "change", [_checkboxGroup.store]);
-				}
-			});
 		};
-
 		return { data, handleChange, isDisabled, isChecked, model };
 	},
 });
