@@ -1,0 +1,55 @@
+@use "../common/style/var.scss" as *;
+@use "./animation.scss" as *;
+
+.dm-popup {
+	touch-action: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	& .dm-popup-overlay {
+		width: 100vw;
+		height: 100vh;
+		content: "";
+		background-color: var(--dm-overlay-color, $dm-overlay-color);
+	}
+
+	& .dm-popup-content {
+		position: absolute;
+		background-color: var(--dm-popup-content-background-color, $dm-background-color-default);
+		box-sizing: border-box;
+	}
+
+	& .dm-popup-left {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		min-width: 20vw;
+		padding: var(--dm-popup-left-padding, 2.25rem 1rem 2.25rem 1rem);
+	}
+
+	& .dm-popup-right {
+		right: 0;
+		top: 0;
+		bottom: 0;
+		min-width: 20vw;
+		padding: var(--dm-popup-right-padding, 2.25rem 1rem 2.25rem 1rem);
+	}
+
+	& .dm-popup-center {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: var(--dm-popup-bottom-border-radius, 1rem);
+		padding: var(--dm-popup-bottom-padding, 1.5rem);
+	}
+
+	& .dm-popup-bottom {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		min-height: 20vh;
+		border-radius: var(--dm-popup-bottom-border-radius, 1rem 1rem 0 0);
+		padding: var(--dm-popup-bottom-padding, 1.5rem 1.625rem 2.375rem 1.625rem);
+	}
+}

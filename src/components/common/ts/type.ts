@@ -1,0 +1,1 @@
+export type PopupPositionType = "bottom" | "left" | "right" | "center";

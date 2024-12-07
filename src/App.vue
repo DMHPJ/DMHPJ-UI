@@ -46,6 +46,10 @@
 				<dm-checkbox-button label="按钮-禁用" disabled></dm-checkbox-button>
 			</dm-checkbox-group>
 		</dm-card>
+		<dm-button @click="testRef.showPopup = !testRef.showPopup">TEST Popup</dm-button>
+		<dm-popup v-model:show="testRef.showPopup" position="bottom">
+			<div>123S{{ testRef.showPopup }}</div>
+		</dm-popup>
 	</div>
 </template>
 
@@ -113,6 +117,7 @@ const testData = [
 const testRef = ref({
 	checked: false,
 	checkList: ["选中且禁用", "选中", "按钮-选中", "边框-选中", "边框-选中且禁用"],
+	showPopup: true,
 });
 
 const testCheckbox = (val: boolean, event: Event) => {

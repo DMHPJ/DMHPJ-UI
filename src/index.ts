@@ -5,17 +5,49 @@ import dmTableColumn from "./components/table-column/index.vue";
 import dmCheckbox from "./components/checkbox/index.vue";
 import dmCheckboxButton from "./components/checkboxButton/index.vue";
 import dmCheckboxGroup from "./components/checkboxGroup/index.vue";
+import dmPopup from "./components/popup/index.vue";
 
 import type { App } from "vue";
 
-const components = [dmCard, dmButton, dmTable, dmTableColumn, dmCheckbox, dmCheckboxButton, dmCheckboxGroup];
+const components = [
+	dmCard,
+	dmButton,
+	dmTable,
+	dmTableColumn,
+	dmCheckbox,
+	dmCheckboxButton,
+	dmCheckboxGroup,
+	dmPopup,
+];
 
 export function install(app: App) {
-  components.forEach((component) => {
-    app.component(component.name!, component);
-  });
+	components.forEach((component) => {
+		app.component(component.name!, component);
+	});
 }
 
 export default { install };
 
-export { dmCard, dmButton, dmTable, dmTableColumn, dmCheckbox, dmCheckboxButton, dmCheckboxGroup }
+export {
+	dmCard,
+	dmButton,
+	dmTable,
+	dmTableColumn,
+	dmCheckbox,
+	dmCheckboxButton,
+	dmCheckboxGroup,
+	dmPopup,
+};
+
+declare module "vue" {
+	export interface GlobalComponents {
+		DmCard: typeof dmCard;
+		DmButton: typeof dmButton;
+		DmTable: typeof dmTable;
+		DmTableColumn: typeof dmTableColumn;
+		DmCheckbox: typeof dmCheckbox;
+		DmCheckboxButton: typeof dmCheckboxButton;
+		DmCheckboxGroup: typeof dmCheckboxGroup;
+		DmPopup: typeof dmPopup;
+	}
+}
