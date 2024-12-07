@@ -1,43 +1,31 @@
 <template>
 	<label
-		class="dm-checkbox"
-		:class="[{ 'is-disabled': isDisabled }, { 'is-border': border }, { 'is-checked': isChecked }]"
+		class="dm-checkbox-button"
+		:class="[{ 'is-disabled': isDisabled }, { 'is-checked': isChecked }]"
 		:id="id">
-		<div
-			class="dm-checkbox-input"
-			:class="{
-				'is-disabled': isDisabled,
-				'is-checked': isChecked,
-				'is-indeterminate': indeterminate,
-				'is-focus': data.focus,
-			}">
-			<span class="dm-checkbox-show"></span>
-			<input
-				v-if="trueLabel || falseLabel"
-				class="dm-checkbox-original"
-				type="checkbox"
-				:aria-hidden="indeterminate ? 'true' : 'false'"
-				:name="name"
-				:disabled="!!isDisabled"
-				:true-value="trueLabel"
-				:false-value="falseLabel"
-				v-model="model"
-				@change="handleChange"
-				@focus="data.focus = true"
-				@blur="data.focus = false" />
-			<input
-				v-else
-				class="dm-checkbox-original"
-				type="checkbox"
-				:aria-hidden="indeterminate ? 'true' : 'false'"
-				:disabled="!!isDisabled"
-				:value="label"
-				:name="name"
-				v-model="model"
-				@change="handleChange"
-				@focus="data.focus = true"
-				@blur="data.focus = false" />
-		</div>
+		<input
+			v-if="trueLabel || falseLabel"
+			class="dm-checkbox-original"
+			type="checkbox"
+			:name="name"
+			:disabled="!!isDisabled"
+			:true-value="trueLabel"
+			:false-value="falseLabel"
+			v-model="model"
+			@change="handleChange"
+			@focus="data.focus = true"
+			@blur="data.focus = false" />
+		<input
+			v-else
+			class="dm-checkbox-original"
+			type="checkbox"
+			:disabled="!!isDisabled"
+			:value="label"
+			:name="name"
+			v-model="model"
+			@change="handleChange"
+			@focus="data.focus = true"
+			@blur="data.focus = false" />
 		<div class="dm-checkbox-label" v-if="$slots.default || label">
 			<slot></slot>
 			<template v-if="!$slots.default">{{ label }}</template>
@@ -49,18 +37,15 @@ import { ComponentInternalInstance, computed, defineComponent, inject, ref } fro
 import { useEmitter } from "../common/utils/emitter";
 
 export default defineComponent({
-	name: "DmCheckbox",
+	name: "DmCheckboxButton",
 	props: {
-		id: { type: String, default: "DmCheckbox" },
+		id: { type: String, default: "DmCheckboxButton" },
 		value: { type: [String, Number, Boolean], default: null },
 		label: { type: [String, Number, Boolean], default: null },
 		trueLabel: { type: [String, Number], default: null },
 		falseLabel: { type: [String, Number], default: null },
-		indeterminate: { type: Boolean, default: false },
-		border: { type: Boolean, default: false },
 		disabled: { type: Boolean, default: false },
 		checked: { type: Boolean, default: false },
-		size: { type: String, default: "default" },
 		name: { type: String, default: null },
 	},
 	emits: ["input", "change"],

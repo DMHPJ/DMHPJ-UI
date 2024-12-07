@@ -1,0 +1,33 @@
+@use "../common/style/var.scss" as *;
+
+.dm-checkbox-button {
+  display: inline-block;
+  color: var(--dm-checkbox-button-default-color, $dm-button-default-text-color);
+  background-color: var(--dm-checkbox-button-default-background-color, $dm-tertiary-color);
+  padding: var(--dm-checkbox-button-padding, 0.5rem 0.88rem);
+  border-radius: var(--dm-checkbox-button-border-radius, 0.25rem);
+  font-size: var(--dm-checkbox-font-size, 0.88rem);
+	font-weight: var(--dm-checkbox-font-weight, 500);
+	line-height: var(--dm-checkbox-line-height, 1rem);
+  cursor: pointer;
+  user-select: none;
+	& .dm-checkbox-original {
+		position: absolute;
+		width: 0;
+		height: 0;
+		z-index: -1;
+		opacity: 0;
+		outline: none;
+	}
+}
+
+.is-disabled{
+  color: var(--dm-checkbox-button-disabled-color, $dm-tertiary-text-color);
+  background-color: var(--dm-checkbox-button-disabled-background-color, $dm-background-color-disabled);
+  cursor: not-allowed;
+}
+
+.is-checked{
+  color: var(--dm-checkbox-button-checked-color, $dm-button-actived-text-color);
+  background-color: var(--dm-checkbox-button-checked-background-color, $dm-main-color);
+}
