@@ -90,6 +90,7 @@
 	border: 0.02rem solid $dm-dividing-line-color;
 	padding: var(--dm-checkbox-border-padding, 0.5rem 0.88rem);
 	border-radius: var(--dm-checkbox-border-border-radius, 0.25rem);
+	cursor: pointer;
 }
 
 .is-border.is-checked {
