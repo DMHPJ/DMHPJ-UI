@@ -10,7 +10,7 @@
   & .dm-table-header{
     border-radius: 0.63rem;
     color: var(--dm-table-header-text-color, $dm-main-color);
-    background-color: var(--dm-table-header-background-color, $dm-secondary-color);
+    background-color: var(--dm-table-header-background-color, $dm-tertiary-color);
     font-size: var(--dm-table-header-font-size, 0.75rem);
     font-weight: var(--dm-table-header-font-weight, 500);
     line-height: var(--dm-table-header-line-height, 0.88rem);

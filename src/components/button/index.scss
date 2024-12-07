@@ -12,7 +12,7 @@
 
 .dm-button-default{
   @extend .dm-button;
-  color: var(--dm-button-text-color, $dm-background-color-default);
+  color: var(--dm-button-text-color, $dm-button-actived-text-color);
 	background-color: var(--dm-button-background-color, $dm-main-color);
   cursor: pointer;
 }
