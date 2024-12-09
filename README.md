@@ -1,6 +1,6 @@
 # 🍰兜帽虎皮卷的UI组件库
 
-![image](/public/preview.png)
+![image](https://github.com/DMHPJ/DMHPJ-UI/blob/main/public/preview.png)
 
 ## 🖥 组件开发中
 
