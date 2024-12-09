@@ -18,13 +18,8 @@
 						<div>{{ row.code }}</div>
 					</template>
 				</dm-table-column>
-				<dm-table-column prop="name" label="姓名"></dm-table-column>
-				<dm-table-column prop="age" label="年龄"></dm-table-column>
-				<dm-table-column prop="remark" label="备注">
-					<template #cell="{ row }">
-						<div>{{ row.remark }}</div>
-					</template>
-				</dm-table-column>
+				<dm-table-column prop="name" label="姓名" width="90"></dm-table-column>
+				<dm-table-column prop="age" label="年龄" minWidth="60"></dm-table-column>
 			</dm-table>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的复选框" shadow>
@@ -48,7 +43,7 @@
 		</dm-card>
 		<dm-button @click="testRef.showPopup = !testRef.showPopup">TEST Popup</dm-button>
 		<dm-popup v-model:show="testRef.showPopup" position="bottom">
-			<div>123S{{ testRef.showPopup }}</div>
+			<dm-calendar type="multiple"></dm-calendar>
 		</dm-popup>
 	</div>
 </template>

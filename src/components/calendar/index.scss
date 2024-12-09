@@ -1,0 +1,96 @@
+@use "../common/style/var.scss" as *;
+
+@mixin calendarGrid() {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(7, minmax(1rem, 1fr));
+}
+
+@mixin gridItem() {
+	@include flex(center, center);
+	aspect-ratio: 1 / 1;
+}
+
+.dm-calendar {
+	& .dm-calendar-header {
+		& .dm-calendar-title {
+			user-select: none;
+			text-align: center;
+			color: var(--dm-calendar-title-color, $dm-primary-text-color);
+			font-size: var(--dm-calendar-title-font-size, 1.25rem);
+			font-weight: var(--dm-calendar-title-font-weight, 500);
+			line-height: var(--dm-calendar-title-line-height, 1.46rem);
+			margin-bottom: var(--dm-calendar-title-margin-bottom, 2rem);
+		}
+
+		& .dm-calendar-year-month {
+			user-select: none;
+			@include flex(center, center);
+			color: var(--dm-calendar-year-month-color, $dm-main-color);
+			font-size: var(--dm-calendar-year-month-font-size, 1rem);
+			font-weight: var(--dm-calendar-year-month-font-weight, 500);
+			margin-bottom: var(--dm-calendar-year-month-margin-bottom, 1.5rem);
+
+			> div:nth-child(2) {
+				margin-inline: var(--dm-calendar-year-month-margin-inline, 2.75rem);
+			}
+		}
+	}
+
+	& .dm-calendar-content {
+		margin-bottom: var(--dm-calendar-content-margin-bottom, 1.5rem);
+
+		& .dm-calendar-week-box {
+			user-select: none;
+			font-family: DIN, DIN;
+			@include calendarGrid();
+			margin-bottom: var(--dm-calendar-week-box-margin-bottom, 1rem);
+
+			& .dm-calendar-week {
+				@include gridItem();
+				color: var(--dm-calendar-week-color, $dm-primary-text-color);
+				font-size: var(--dm-calendar-date-font-size, 0.75rem);
+				font-weight: var(--dm-calendar-date-font-weight, 400);
+			}
+		}
+
+		& .dm-calendar-date-box {
+			position: relative;
+			user-select: none;
+			font-family: DIN, DIN;
+			@include calendarGrid();
+
+			& .dm-calendar-background {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 1;
+				user-select: none;
+				color: var(--dm-calendar-background-text-color, $dm-tertiary-text-color);
+				font-size: var(--dm-calendar-background-font-size, 10rem);
+				opacity: var(--dm-calendar-background-opacity, 0.4);
+			}
+
+			& .dm-calendar-date {
+				@include gridItem();
+				color: var(--dm-calendar-date-color, $dm-secondary-text-color);
+				font-size: var(--dm-calendar-date-font-size, 0.88rem);
+				font-weight: var(--dm-calendar-date-font-weight, bold);
+				z-index: 2;
+			}
+
+			& .dm-calendar-date-quaternary {
+				color: var(--dm-calendar-date-quaternary-color, $dm-quaternary-text-color);
+				font-size: var(--dm-calendar-date-font-size, 0.88rem);
+				font-weight: var(--dm-calendar-date-font-weight, 400);
+			}
+
+			& .is-single-selected {
+				color: var(--dm-calendar-date-selected-color, $dm-button-actived-text-color);
+				background-color: var(--dm-calendar-date-selected-background-color, $dm-main-color);
+				border-radius: var(--dm-calendar-date-selected-border-radius, 10rem);
+			}
+		}
+	}
+}

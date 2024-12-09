@@ -6,6 +6,7 @@ import dmCheckbox from "./components/checkbox/index.vue";
 import dmCheckboxButton from "./components/checkboxButton/index.vue";
 import dmCheckboxGroup from "./components/checkboxGroup/index.vue";
 import dmPopup from "./components/popup/index.vue";
+import dmCalendar from "./components/calendar/index.vue";
 
 import type { App } from "vue";
 
@@ -18,6 +19,7 @@ const components = [
 	dmCheckboxButton,
 	dmCheckboxGroup,
 	dmPopup,
+	dmCalendar
 ];
 
 export function install(app: App) {
@@ -37,6 +39,7 @@ export {
 	dmCheckboxButton,
 	dmCheckboxGroup,
 	dmPopup,
+	dmCalendar
 };
 
 declare module "vue" {
@@ -49,5 +52,6 @@ declare module "vue" {
 		DmCheckboxButton: typeof dmCheckboxButton;
 		DmCheckboxGroup: typeof dmCheckboxGroup;
 		DmPopup: typeof dmPopup;
+		DmCalendar: typeof dmCalendar;
 	}
 }

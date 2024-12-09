@@ -10,6 +10,7 @@ $dm-background-color-disabled: #EEEEEE;
 $dm-primary-text-color: #333333;
 $dm-secondary-text-color: #666666;
 $dm-tertiary-text-color: #999999;
+$dm-quaternary-text-color: #CCCCCC;
 
 $dm-button-actived-text-color: #FFFFFF;
 $dm-button-default-text-color: #A5C4FF;
@@ -20,4 +21,20 @@ $dm-dividing-line-color: #EEEEEE;
   display: flex;
   align-items: $aiStyle;
   justify-content: $jcStyle;
+}
+
+
+.arrow-left{
+  content: '';
+  background-image: url(/src/img/arrow.svg);
+  width: 0.63rem;
+  height: 0.63rem;
+}
+
+.arrow-right{
+  content: '';
+  background-image: url(/src/img/arrow.svg);
+  width: 0.63rem;
+  height: 0.63rem;
+  transform: rotate(180deg);
 }

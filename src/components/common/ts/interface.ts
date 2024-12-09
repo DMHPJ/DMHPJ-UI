@@ -20,5 +20,22 @@ export interface checkboxGroup {
 	size: string;
 	fill: string;
 	textColor: string;
-  dispatch: Function;
+	dispatch: Function;
+}
+
+export interface dayList {
+	chineseFullName?: string;
+	chineseShortName?: string;
+	fullName?: string;
+	shortName?: string;
+	dayNumber: number;
+}
+
+export interface calendarObj {
+	selectedYear: number;
+	selectedMonth: number;
+	selectedDate: number;
+	lastMonthList: Date[];
+	thisMonthList: Date[];
+	nextMonthList: Date[];
 }
