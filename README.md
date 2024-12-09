@@ -1,6 +1,6 @@
 # 🍰兜帽虎皮卷的UI组件库
 
-![image](public/preview.png)
+![image](/public/preview.png)
 
 ## 🖥 组件开发中
 
