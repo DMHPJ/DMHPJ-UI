@@ -6,14 +6,28 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: "src/index.ts",
-			formats: ["cjs", "es"],
+			name: "dmhpj-ui",
+			formats: ["cjs", "es", "umd"],
+			fileName: (format) => `dmhpj-ui.${format}.js`,
 		},
 		rollupOptions: {
 			external: ["vue"],
+			output: {
+				globals: {
+					vue: "Vue",
+				},
+			},
 		},
 	},
 	plugins: [
-		vue(),
-		dts({ insertTypesEntry: true, copyDtsFiles: false, include: ["src/components/**/*.{vue,ts}"] }),
+		vue({
+			include: [/\.vue$/],
+		}),
+		dts({
+			tsconfigPath: 'tsconfig.app.json',
+			insertTypesEntry: true,
+			copyDtsFiles: true,
+			include: ["src/**/*.d.ts", "src/**/*.vue", "src/**/*.ts"],
+		}),
 	],
 });
