@@ -1,6 +1,7 @@
 {
   "name": "dmhpj-ui",
-  "version": "0.1.7",
+  "version": "0.1.9",
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +11,28 @@
   "main": "dist/dmhpj-ui.cjs.js",
   "module": "dist/dmhpj-ui.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "package.json",
+    "README.md",
+    "dist"
+  ],
+  "author": "DMHPJ",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DMHPJ/DMHPJ-UI"
+  },
+  "bugs": {
+    "url": "https://github.com/DMHPJ/DMHPJ-UI/issues"
+  },
+  "homepage": "https://github.com/DMHPJ/DMHPJ-UI/blob/master/README.md",
+  "description": "兜帽虎皮卷的组件库",
+  "keywords": [
+    "vite",
+    "vue3",
+    "typescript",
+    "demo"
+  ],
   "dependencies": {
     "vue": "^3.5.12"
   },
