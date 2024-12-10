@@ -25,7 +25,7 @@
 - ⚙️ 通过 NPM 安装
 
   ```
-  npm install dmhpjUI
+  npm install dmhpj-ui
   ```
 
 ## 🔨 如何使用
@@ -34,16 +34,17 @@
 
   ```ts
   //main.ts
-  import DmhpjUI from "DmhpjUI";
+  import "dmhpj-ui/dist/style.css"
+  import dmhpjUI from "dmhpj-ui";
   ...
-  createApp(App).use(DmhpjUI).mount("#app");
+  createApp(App).use(dmhpjUI).mount("#app");
   ```
 
 - 🎨 局部引用
 
   ```vue
   //希望引入的页面
-  import { dmCard, dmTable, dmTableColumn } from "DmhpjUI";
+  import { dmCard, dmTable, dmTableColumn } from "dmhpj-ui";
   
   <template>
     <dm-card>
