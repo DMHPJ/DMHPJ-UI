@@ -7,8 +7,8 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
-  "main": "dist/dmhpj-ui.cjs",
-  "module": "dist/dmhpj-ui.js",
+  "main": "dist/dmhpj-ui.cjs.js",
+  "module": "dist/dmhpj-ui.es.js",
   "types": "dist/index.d.ts",
   "dependencies": {
     "vue": "^3.5.12"
