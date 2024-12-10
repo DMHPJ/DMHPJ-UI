@@ -5,7 +5,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
 	build: {
 		lib: {
-			entry: "src/index.ts",
+			entry: "./src/index.ts",
 			name: "dmhpj-ui",
 			formats: ["cjs", "es", "umd"],
 			fileName: (format) => `dmhpj-ui.${format}.js`,
@@ -13,6 +13,7 @@ export default defineConfig({
 		rollupOptions: {
 			external: ["vue"],
 			output: {
+				exports: "named",
 				globals: {
 					vue: "Vue",
 				},
@@ -24,7 +25,7 @@ export default defineConfig({
 			include: [/\.vue$/],
 		}),
 		dts({
-			tsconfigPath: 'tsconfig.app.json',
+			tsconfigPath: "tsconfig.app.json",
 			insertTypesEntry: true,
 			copyDtsFiles: true,
 			include: ["src/**/*.d.ts", "src/**/*.vue", "src/**/*.ts"],
