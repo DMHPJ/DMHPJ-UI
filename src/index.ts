@@ -1,7 +1,7 @@
 import dmCard from "./components/card/index.vue";
 import dmButton from "./components/button/index.vue";
 import dmTable from "./components/table/index.vue";
-import dmTableColumn from "./components/table-column/index.vue";
+import dmTableColumn from "./components/tableColumn/index.vue";
 import dmCheckbox from "./components/checkbox/index.vue";
 import dmCheckboxButton from "./components/checkboxButton/index.vue";
 import dmCheckboxGroup from "./components/checkboxGroup/index.vue";
@@ -9,6 +9,7 @@ import dmPopup from "./components/popup/index.vue";
 import dmCalendar from "./components/calendar/index.vue";
 import dmIcon from "./components/icon/index.vue";
 
+import "./components/common/style/index.scss";
 import type { App } from "vue";
 
 const components = [
