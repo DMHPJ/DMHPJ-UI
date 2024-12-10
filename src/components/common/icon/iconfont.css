@@ -1,0 +1,218 @@
+@font-face {
+	font-family: "dmIcon"; /* Project id 4776465 */
+	src: url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.woff2?t=1733812239708") format("woff2"),
+		url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.woff?t=1733812239708") format("woff"),
+		url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.ttf?t=1733812239708") format("truetype");
+}
+
+.dm-icon {
+	font-family: "dmIcon" !important;
+	font-size: 1rem;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.add:before {
+	content: "\e6f0";
+}
+
+.arrow-up:before {
+	content: "\e6f1";
+}
+
+.arrow-right:before {
+	content: "\e6f2";
+}
+
+.cicle-add:before {
+	content: "\e6f3";
+}
+
+.arrow-down:before {
+	content: "\e6f4";
+}
+
+.arrow-left:before {
+	content: "\e6f5";
+}
+
+.cicle-close:before {
+	content: "\e6f6";
+}
+
+.cicle-down:before {
+	content: "\e6f7";
+}
+
+.cicle-left:before {
+	content: "\e6f8";
+}
+
+.cicle-pause:before {
+	content: "\e6f9";
+}
+
+.cicle-minus:before {
+	content: "\e6fa";
+}
+
+.cicle-play:before {
+	content: "\e6fb";
+}
+
+.cicle-right:before {
+	content: "\e6fc";
+}
+
+.close:before {
+	content: "\e6fd";
+}
+
+.double-arrow-left:before {
+	content: "\e6fe";
+}
+
+.double-arrow-down:before {
+	content: "\e6ff";
+}
+
+.double-arrow-right:before {
+	content: "\e700";
+}
+
+.cicle-question:before {
+	content: "\e701";
+}
+
+.double-arrow-up:before {
+	content: "\e702";
+}
+
+.good:before {
+	content: "\e703";
+}
+
+.cicle-seleted:before {
+	content: "\e704";
+}
+
+.pause:before {
+	content: "\e705";
+}
+
+.search:before {
+	content: "\e706";
+}
+
+.paly:before {
+	content: "\e707";
+}
+
+.home:before {
+	content: "\e708";
+}
+
+.setting:before {
+	content: "\e709";
+}
+
+.square-add:before {
+	content: "\e70a";
+}
+
+.minus:before {
+	content: "\e70b";
+}
+
+.square-left:before {
+	content: "\e70c";
+}
+
+.cicle-up:before {
+	content: "\e70d";
+}
+
+.heart:before {
+	content: "\e70e";
+}
+
+.square-up:before {
+	content: "\e70f";
+}
+
+.square-right:before {
+	content: "\e710";
+}
+
+.square-down:before {
+	content: "\e711";
+}
+
+.square-close:before {
+	content: "\e712";
+}
+
+.star:before {
+	content: "\e713";
+}
+
+.seleted:before {
+	content: "\e714";
+}
+
+.trash:before {
+	content: "\e715";
+}
+
+.square-seleted:before {
+	content: "\e716";
+}
+
+.square-minus:before {
+	content: "\e717";
+}
+
+.elipsis:before {
+	content: "\e718";
+}
+
+.person:before {
+	content: "\e719";
+}
+
+.picture:before {
+	content: "\e71a";
+}
+
+.downarrow:before {
+	content: "\e71b";
+}
+
+.exchangerate:before {
+	content: "\e71c";
+}
+
+.rightarrow:before {
+	content: "\e71d";
+}
+
+.leftarrow:before {
+	content: "\e71e";
+}
+
+.goforward:before {
+	content: "\e71f";
+}
+
+.toparrow:before {
+	content: "\e720";
+}
+
+.arrowturnleft:before {
+	content: "\e721";
+}
+
+.arrowturnright:before {
+	content: "\e722";
+}
