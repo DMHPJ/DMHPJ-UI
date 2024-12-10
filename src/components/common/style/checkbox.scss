@@ -1,4 +1,4 @@
-@use "../common/style/var.scss" as *;
+@use "./var.scss" as *;
 
 .dm-checkbox {
 	@include flex();

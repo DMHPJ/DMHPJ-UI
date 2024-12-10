@@ -12,5 +12,5 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@use "./index.scss";
+@use "../common/style/icon.scss";
 </style>

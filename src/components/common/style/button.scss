@@ -1,4 +1,4 @@
-@use "../common/style/var.scss" as *;
+@use "./var.scss" as *;
 
 .dm-button {
   font-size: var(--dm-button-font-size, 0.88rem);
