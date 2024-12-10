@@ -5,9 +5,11 @@
 				<div class="dm-calendar-title">{{ title }}</div>
 			</slot>
 			<div class="dm-calendar-year-month">
-				<div class="arrow-left"></div>
+				<dm-icon name="double-arrow-left" @click="handleYearChange(-1)"></dm-icon>
+				<dm-icon name="arrow-left" @click="handleMonthChange(-1)"></dm-icon>
 				<div>{{ calendarObj.selectedYear + "年" + calendarObj.selectedMonth + "月" }}</div>
-				<div class="arrow-right"></div>
+				<dm-icon name="arrow-right" @click="handleMonthChange(1)"></dm-icon>
+				<dm-icon name="double-arrow-right" @click="handleYearChange(1)"></dm-icon>
 			</div>
 		</div>
 		<div class="dm-calendar-content">
@@ -29,7 +31,7 @@
 					:class="getClass(item)"
 					v-for="item in calendarObj.thisMonthList"
 					@click="handleClickDate(0, item)">
-					{{dmDay.getDate(item).date }}
+					{{ dmDay.getDate(item).date }}
 				</div>
 				<div
 					class="dm-calendar-date dm-calendar-date-quaternary"
@@ -39,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-		<dm-button block @click="handleConfirm">确定</dm-button>
+		<dm-button v-if="showConfirm" block @click="handleConfirm">确定</dm-button>
 	</div>
 </template>
 <script lang="ts">
@@ -57,6 +59,7 @@ export default defineComponent({
 		weekList: { type: Array<dayList>, default: dmDay.dayNameList },
 		currentDay: { type: [Number, String, Date], default: new Date() },
 		title: { type: String, default: "日历" },
+		showConfirm: { type: Boolean, default: true },
 	},
 	components: { dmButton },
 	setup(props, { emit }) {
@@ -128,6 +131,16 @@ export default defineComponent({
 			return (calendarObj.value.selectedMonth = afterCalc);
 		};
 
+		const handleMonthChange = (calc: number) => {
+			changeMonth(calc);
+			setCalendarData();
+		};
+
+		const handleYearChange = (calc: number) => {
+			calendarObj.value.selectedYear += calc;
+			setCalendarData();
+		}
+
 		const multipleClick = (newSelectedDate: Date) => {
 			const findIndex = selectedList.value.findIndex((item) =>
 				dmDay.areDatesEqual(item, newSelectedDate)
@@ -143,6 +156,14 @@ export default defineComponent({
 		};
 
 		const rangeClick = (newSelectedDate: Date) => {
+			if (
+				selectedList.value.length > 0 &&
+				dmDay.areDatesEqual(newSelectedDate, selectedList.value[0])
+			) {
+				const oldValue = [...selectedList.value];
+				selectedList.value.splice(0);
+				return emit("unselect", selectedList.value, oldValue);
+			}
 			if (selectedList.value.length === 0) {
 				selectedList.value.push(newSelectedDate);
 			} else {
@@ -169,12 +190,22 @@ export default defineComponent({
 		};
 
 		const getClass = (date: Date) => {
-			if(props.type === 'single'){
-				return calendarObj.value.selectedDate === dmDay.getDate(date).date ? 'is-single-selected' : ''
-			} else if(props.type === 'multiple'){
-				return selectedList.value.findIndex((item) => dmDay.areDatesEqual(item, date)) !== -1 ? 'is-single-selected' : ''
+			if (props.type === "single") {
+				return calendarObj.value.selectedDate === dmDay.getDate(date).date
+					? "is-single-selected"
+					: "";
+			} else if (props.type === "multiple") {
+				return selectedList.value.findIndex((item) => dmDay.areDatesEqual(item, date)) !== -1
+					? "is-multiple-selected"
+					: "";
+			} else if (props.type === "range") {
+				const findIndex = selectedList.value.findIndex((item) => dmDay.areDatesEqual(item, date));
+				if (findIndex === -1) return "";
+				if (findIndex === 0) return "is-range-start";
+				if (findIndex === selectedList.value.length - 1) return "is-range-end";
+				return "is-range-selected";
 			}
-		}
+		};
 
 		// const init = () => {
 		// 	console.log("init");
@@ -189,13 +220,22 @@ export default defineComponent({
 
 		const handleConfirm = (event: Event) => {
 			emit("confirm", selectedList.value, event);
-		}
+		};
 
 		onMounted(() => {
 			setCalendarData();
 		});
 
-		return { getWeekList, handleClickDate, getClass, handleConfirm, calendarObj, dmDay };
+		return {
+			getWeekList,
+			handleClickDate,
+			getClass,
+			handleConfirm,
+			handleYearChange,
+			handleMonthChange,
+			calendarObj,
+			dmDay,
+		};
 	},
 });
 </script>

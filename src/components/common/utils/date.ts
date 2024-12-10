@@ -214,6 +214,8 @@ export default {
 	getMonthFirstDayAndWeek,
 	areDatesEqual,
 	getRangeDate,
+	isBefore,
+	isAfter,
 	dayNameList,
 	monthNameList,
 };

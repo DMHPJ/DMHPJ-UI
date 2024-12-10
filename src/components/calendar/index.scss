@@ -11,6 +11,22 @@
 	aspect-ratio: 1 / 1;
 }
 
+@mixin selectedColor() {
+	color: var(--dm-calendar-date-selected-color, $dm-button-actived-text-color);
+	background-color: var(--dm-calendar-date-selected-background-color, $dm-main-color);
+}
+
+@mixin rangeGapStyle($left, $right) {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: $right;
+	left: $left;
+	bottom: 0;
+	background-color: var(--dm-calendar-date-range-selected-background-color, #ebf3ff99);
+	pointer-events: none;
+}
+
 .dm-calendar {
 	& .dm-calendar-header {
 		& .dm-calendar-title {
@@ -31,7 +47,11 @@
 			font-weight: var(--dm-calendar-year-month-font-weight, 500);
 			margin-bottom: var(--dm-calendar-year-month-margin-bottom, 1.5rem);
 
-			> div:nth-child(2) {
+			> div:not(:nth-child(3)){
+				padding-inline: var(--dm-calendar-year-month-padding-inline, 0.5rem);
+			}
+
+			> div:nth-child(3) {
 				margin-inline: var(--dm-calendar-year-month-margin-inline, 2.75rem);
 			}
 		}
@@ -78,6 +98,7 @@
 				font-size: var(--dm-calendar-date-font-size, 0.88rem);
 				font-weight: var(--dm-calendar-date-font-weight, bold);
 				z-index: 2;
+				box-sizing: border-box;
 			}
 
 			& .dm-calendar-date-quaternary {
@@ -87,9 +108,49 @@
 			}
 
 			& .is-single-selected {
-				color: var(--dm-calendar-date-selected-color, $dm-button-actived-text-color);
-				background-color: var(--dm-calendar-date-selected-background-color, $dm-main-color);
+				@include selectedColor();
 				border-radius: var(--dm-calendar-date-selected-border-radius, 10rem);
+			}
+
+			& .is-multiple-selected {
+				@include selectedColor();
+				border-radius: var(--dm-calendar-date-multiple-selected-border-radius, 0.5rem);
+			}
+
+			& .is-range-start {
+				position: relative;
+				@include selectedColor();
+				border-radius: var(--dm-calendar-date-range-start-border-radius, 0.5rem 0 0 0.5rem);
+				box-shadow: 0 0 0.7rem 0.025rem var(--dm-card-shadow-heavy-color, $dm-shadow-heavy-color);
+			}
+
+			& .is-range-start::after {
+				@include rangeGapStyle(100%, -0.5rem);
+			}
+
+			& .is-range-selected {
+				position: relative;
+				color: var(--dm-calendar-date-range-selected-color, $dm-button-default-text-color);
+				background-color: var(--dm-calendar-date-range-selected-background-color, #ebf3ff99);
+			}
+
+			& .is-range-selected::before {
+				@include rangeGapStyle(-0.5rem, 100%);
+			}
+
+			& .is-range-selected::after {
+				@include rangeGapStyle(100%, -0.5rem);
+			}
+
+			& .is-range-end {
+				position: relative;
+				@include selectedColor();
+				border-radius: var(--dm-calendar-date-range-end-border-radius, 0 0.5rem 0.5rem 0);
+				box-shadow: 0 0 0.7rem 0.025rem var(--dm-card-shadow-heavy-color, $dm-shadow-heavy-color);
+			}
+
+			& .is-range-end::before {
+				@include rangeGapStyle(-0.5rem, 100%);
 			}
 		}
 	}

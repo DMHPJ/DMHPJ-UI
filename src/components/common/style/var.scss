@@ -1,7 +1,10 @@
+@use "../icon/iconfont.css" as *;
+
 $dm-main-color: #2965FF;
 $dm-secondary-color: #A5C4FF;
 $dm-tertiary-color: #ECF4FF;
 $dm-shadow-color: #2965FF0F;
+$dm-shadow-heavy-color: #2965FF99;
 $dm-overlay-color: #00000099;
 
 $dm-background-color-default: #FFFFFF;
@@ -21,20 +24,4 @@ $dm-dividing-line-color: #EEEEEE;
   display: flex;
   align-items: $aiStyle;
   justify-content: $jcStyle;
-}
-
-
-.arrow-left{
-  content: '';
-  background-image: url(/src/img/arrow.svg);
-  width: 0.63rem;
-  height: 0.63rem;
-}
-
-.arrow-right{
-  content: '';
-  background-image: url(/src/img/arrow.svg);
-  width: 0.63rem;
-  height: 0.63rem;
-  transform: rotate(180deg);
 }

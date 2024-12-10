@@ -41,10 +41,17 @@
 				<dm-checkbox-button label="按钮-禁用" disabled></dm-checkbox-button>
 			</dm-checkbox-group>
 		</dm-card>
-		<dm-button @click="testRef.showPopup = !testRef.showPopup">TEST Popup</dm-button>
-		<dm-popup v-model:show="testRef.showPopup" position="bottom">
+		<dm-card title="兜帽虎皮卷的日历" shadow>
+			<dm-calendar type="multiple" title="请选择日期"></dm-calendar>
+		</dm-card>
+		<!-- <dm-popup v-model:show="testRef.showPopup" position="bottom">
 			<dm-calendar type="multiple"></dm-calendar>
+		</dm-popup> -->
+		<dm-popup v-model:show="testRef.showPopup" position="bottom">
+			<div style="text-align: center; height: 25vh">我是弹出层内容</div>
+			<dm-button block>我是弹出层内容</dm-button>
 		</dm-popup>
+		<dm-button @click="testRef.showPopup = !testRef.showPopup">TEST Popup</dm-button>
 	</div>
 </template>
 
@@ -60,9 +67,9 @@ const testData = [
 		remark: "兜帽虎皮卷的表格",
 	},
 	{
-		updateTime: "2024-10-14 16:51:21",
+		updateTime: "2024-10-29 16:05:17",
 		name: "兜帽虎皮卷小偷",
-		code: "2024100005",
+		code: "2024100001",
 		age: "22",
 		remark: "兜帽虎皮卷的表格",
 	},
@@ -77,27 +84,6 @@ const testData = [
 		updateTime: "2024-10-29 16:05:17",
 		name: "兜帽虎皮卷小偷",
 		code: "2024100001",
-		age: "22",
-		remark: "兜帽虎皮卷的表格",
-	},
-	{
-		updateTime: "2024-10-29 16:49:00",
-		name: "兜帽虎皮卷小偷",
-		code: "2024100007",
-		age: "22",
-		remark: "兜帽虎皮卷的表格",
-	},
-	{
-		updateTime: "2024-10-14 16:51:21",
-		name: "兜帽虎皮卷小偷",
-		code: "2024100005",
-		age: "22",
-		remark: "兜帽虎皮卷的表格",
-	},
-	{
-		updateTime: "2024-10-14 16:29:05",
-		name: "兜帽虎皮卷小偷",
-		code: "2024100004",
 		age: "22",
 		remark: "兜帽虎皮卷的表格",
 	},
@@ -112,7 +98,7 @@ const testData = [
 const testRef = ref({
 	checked: false,
 	checkList: ["选中且禁用", "选中", "按钮-选中", "边框-选中", "边框-选中且禁用"],
-	showPopup: true,
+	showPopup: false,
 });
 
 const testCheckbox = (val: boolean, event: Event) => {
