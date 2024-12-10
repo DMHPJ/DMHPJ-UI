@@ -43,7 +43,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style lang="scss" scoped>
-@use "../common/style/button.scss";
-</style>

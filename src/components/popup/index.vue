@@ -69,6 +69,3 @@ export default defineComponent({
 	},
 });
 </script>
-<style lang="scss" scoped>
-@use "../common/style/popup.scss";
-</style>

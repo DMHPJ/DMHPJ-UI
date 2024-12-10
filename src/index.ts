@@ -9,6 +9,7 @@ import dmPopup from "./components/popup/index.vue";
 import dmCalendar from "./components/calendar/index.vue";
 import dmIcon from "./components/icon/index.vue";
 
+import "./components/common/style/index.scss";
 import type { App } from "vue";
 
 const components = [

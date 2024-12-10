@@ -1,13 +1,13 @@
 <template>
 	<label
 		class="dm-checkbox"
-		:class="[{ 'is-disabled': isDisabled }, { 'is-border': border }, { 'is-checked': isChecked }]"
+		:class="[{ 'dm-checkbox-is-disabled': isDisabled }, { 'dm-checkbox-is-border': border }, { 'dm-checkbox-is-checked': isChecked }]"
 		:id="id">
 		<div
 			class="dm-checkbox-input"
 			:class="{
-				'is-disabled': isDisabled,
-				'is-checked': isChecked,
+				'dm-checkbox-is-disabled': isDisabled,
+				'dm-checkbox-is-checked': isChecked,
 				'is-indeterminate': indeterminate,
 				'is-focus': data.focus,
 			}">
@@ -140,6 +140,3 @@ export default defineComponent({
 	},
 });
 </script>
-<style lang="scss" scoped>
-@use "../common/style/checkbox.scss";
-</style>

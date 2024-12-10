@@ -1,7 +1,7 @@
 <template>
 	<label
 		class="dm-checkbox-button"
-		:class="[{ 'is-disabled': isDisabled }, { 'is-checked': isChecked }]"
+		:class="[{ 'dm-checkbox-button-is-disabled': isDisabled }, { 'dm-checkbox-button-is-checked': isChecked }]"
 		:id="id">
 		<input
 			v-if="trueLabel || falseLabel"
@@ -125,6 +125,3 @@ export default defineComponent({
 	},
 });
 </script>
-<style lang="scss" scoped>
-@use "../common/style/checkboxButton.scss";
-</style>

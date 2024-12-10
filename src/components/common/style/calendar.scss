@@ -107,49 +107,49 @@
 				font-weight: var(--dm-calendar-date-font-weight, 400);
 			}
 
-			& .is-single-selected {
+			& .dm-calendar-is-single-selected {
 				@include selectedColor();
 				border-radius: var(--dm-calendar-date-selected-border-radius, 10rem);
 			}
 
-			& .is-multiple-selected {
+			& .dm-calendar-is-multiple-selected {
 				@include selectedColor();
 				border-radius: var(--dm-calendar-date-multiple-selected-border-radius, 0.5rem);
 			}
 
-			& .is-range-start {
+			& .dm-calendar-is-range-start {
 				position: relative;
 				@include selectedColor();
 				border-radius: var(--dm-calendar-date-range-start-border-radius, 0.5rem 0 0 0.5rem);
 				box-shadow: 0 0 0.7rem 0.025rem var(--dm-card-shadow-heavy-color, $dm-shadow-heavy-color);
 			}
 
-			& .is-range-start::after {
+			& .dm-calendar-is-range-start::after {
 				@include rangeGapStyle(100%, -0.5rem);
 			}
 
-			& .is-range-selected {
+			& .dm-calendar-is-range-selected {
 				position: relative;
 				color: var(--dm-calendar-date-range-selected-color, $dm-button-default-text-color);
 				background-color: var(--dm-calendar-date-range-selected-background-color, #ebf3ff99);
 			}
 
-			& .is-range-selected::before {
+			& .dm-calendar-is-range-selected::before {
 				@include rangeGapStyle(-0.5rem, 100%);
 			}
 
-			& .is-range-selected::after {
+			& .dm-calendar-is-range-selected::after {
 				@include rangeGapStyle(100%, -0.5rem);
 			}
 
-			& .is-range-end {
+			& .dm-calendar-is-range-end {
 				position: relative;
 				@include selectedColor();
 				border-radius: var(--dm-calendar-date-range-end-border-radius, 0 0.5rem 0.5rem 0);
 				box-shadow: 0 0 0.7rem 0.025rem var(--dm-card-shadow-heavy-color, $dm-shadow-heavy-color);
 			}
 
-			& .is-range-end::before {
+			& .dm-calendar-is-range-end::before {
 				@include rangeGapStyle(-0.5rem, 100%);
 			}
 		}

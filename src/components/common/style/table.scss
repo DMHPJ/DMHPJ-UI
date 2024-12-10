@@ -35,8 +35,8 @@
     min-width: 100%;
   }
 
-  & .dm-table-header div,
-  & .dm-table-row div {
+  & .dm-table-header > div,
+  & .dm-table-row > div {
     white-space: nowrap;
     margin-inline: 1rem;
     padding-block: 0.75rem;

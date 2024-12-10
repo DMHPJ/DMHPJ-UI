@@ -21,13 +21,13 @@
 	}
 }
 
-.is-disabled{
+.dm-checkbox-button-is-disabled{
   color: var(--dm-checkbox-button-disabled-color, $dm-tertiary-text-color);
   background-color: var(--dm-checkbox-button-disabled-background-color, $dm-background-color-disabled);
   cursor: not-allowed;
 }
 
-.is-checked{
+.dm-checkbox-button-is-checked{
   color: var(--dm-checkbox-button-checked-color, $dm-button-actived-text-color);
   background-color: var(--dm-checkbox-button-checked-background-color, $dm-main-color);
 }

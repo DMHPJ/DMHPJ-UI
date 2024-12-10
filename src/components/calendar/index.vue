@@ -192,18 +192,18 @@ export default defineComponent({
 		const getClass = (date: Date) => {
 			if (props.type === "single") {
 				return calendarObj.value.selectedDate === dmDay.getDate(date).date
-					? "is-single-selected"
+					? "dm-calendar-is-single-selected"
 					: "";
 			} else if (props.type === "multiple") {
 				return selectedList.value.findIndex((item) => dmDay.areDatesEqual(item, date)) !== -1
-					? "is-multiple-selected"
+					? "dm-calendar-is-multiple-selected"
 					: "";
 			} else if (props.type === "range") {
 				const findIndex = selectedList.value.findIndex((item) => dmDay.areDatesEqual(item, date));
 				if (findIndex === -1) return "";
-				if (findIndex === 0) return "is-range-start";
-				if (findIndex === selectedList.value.length - 1) return "is-range-end";
-				return "is-range-selected";
+				if (findIndex === 0) return "dm-calendar-is-range-start";
+				if (findIndex === selectedList.value.length - 1) return "dm-calendar-is-range-end";
+				return "dm-calendar-is-range-selected";
 			}
 		};
 
@@ -239,6 +239,3 @@ export default defineComponent({
 	},
 });
 </script>
-<style lang="scss" scoped>
-@use "../common/style/calendar.scss";
-</style>
