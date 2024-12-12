@@ -1,8 +1,8 @@
 @font-face {
 	font-family: "dmIcon"; /* Project id 4776465 */
-	src: url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.woff2?t=1733812239708") format("woff2"),
-		url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.woff?t=1733812239708") format("woff"),
-		url("//at.alicdn.com/t/c/font_4776465_ct39ugevo6s.ttf?t=1733812239708") format("truetype");
+	src: url("//at.alicdn.com/t/c/font_4776465_7j5hnmjodhr.woff2?t=1733982711584") format("woff2"),
+		url("//at.alicdn.com/t/c/font_4776465_7j5hnmjodhr.woff?t=1733982711584") format("woff"),
+		url("//at.alicdn.com/t/c/font_4776465_7j5hnmjodhr.ttf?t=1733982711584") format("truetype");
 }
 
 .dm-icon {
@@ -11,6 +11,18 @@
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.star:before {
+	content: "\e69d";
+}
+
+.star-o:before {
+	content: "\e69f";
+}
+
+.star-half:before {
+	content: "\e723";
 }
 
 .add:before {
@@ -151,10 +163,6 @@
 
 .square-close:before {
 	content: "\e712";
-}
-
-.star:before {
-	content: "\e713";
 }
 
 .seleted:before {

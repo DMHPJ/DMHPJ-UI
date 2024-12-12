@@ -1,0 +1,24 @@
+@use "./var.scss" as *;
+
+.dm-form-item{
+  display: flex;
+  align-items: center;
+
+  & .dm-form-item-label{
+    display: flex;
+    flex-shrink: 0;
+    color: var(--dm-form-item-label-color, $dm-secondary-text-color);
+    font-size: var(--dm-form-item-label-font-size, 0.88rem);
+    font-weight: var(--dm-form-item-label-font-weight, 400);
+    line-height: var(--dm-form-item-label-line-height, 1.03rem);
+  }
+
+  & .dm-form-item-required::after{
+    content: "*";
+    color: var(--dm-form-item-required-color, $dm-required-color);
+  }
+
+  & .dm-form-item-content{
+    flex-grow: 1;
+  }
+}

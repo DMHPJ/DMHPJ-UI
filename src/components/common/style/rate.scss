@@ -1,0 +1,32 @@
+@use "./var.scss" as *;
+
+.dm-rate {
+	& .dm-rate-item {
+		display: inline-block;
+		margin-right: var(--dm-rate-item-margin-right);
+
+		& .dm-rate-icon-full {
+			color: var(--dm-rate-icon-full-color);
+			font-size: var(--dm-rate-icon-full-size);
+		}
+
+		& .dm-rate-icon-halt {
+			position: relative; 
+
+			& .dm-rate-icon-empty {
+      color: var(--dm-rate-icon-empty-color);
+				font-size: var(--dm-rate-icon-empty-size);
+			}
+
+			& .dm-rate-icon-color {
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+				color: var(--dm-rate-icon-color-color);
+				font-size: var(--dm-rate-icon-color-size);
+			}
+		}
+	}
+}

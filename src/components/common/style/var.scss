@@ -20,6 +20,8 @@ $dm-button-default-text-color: #A5C4FF;
 
 $dm-dividing-line-color: #EEEEEE;
 
+$dm-required-color: #FF6666;
+
 @mixin flex($aiStyle: center, $jcStyle: flex-start) {
   display: flex;
   align-items: $aiStyle;

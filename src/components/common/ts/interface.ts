@@ -39,3 +39,26 @@ export interface calendarObj {
 	thisMonthList: Date[];
 	nextMonthList: Date[];
 }
+
+export interface RuleItem {
+	required?: boolean;
+	validator?: Function;
+	trigger?: string;
+	message?: string;
+}
+
+export interface Rules {
+	[key: string]: Array<RuleItem>;
+}
+
+export interface FormParamObj {
+	labelWidth: string|number;
+	labelAlign: string;
+	rules: Rules;
+	readonly: boolean;
+	disabled: boolean;
+}
+
+export interface FormInstance extends FormParamObj {
+	validate: Function;
+}
