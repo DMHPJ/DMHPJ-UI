@@ -11,6 +11,9 @@ import dmIcon from "./components/icon/index.vue";
 import dmForm from "./components/form/index.vue";
 import dmFormItem from "./components/formItem/index.vue";
 import dmRate from "./components/rate/index.vue";
+import dmToast from "./components/toast/index.vue";
+
+import showToast from "./components/toast/showToast";
 
 import "./components/common/style/index.scss";
 import type { App } from "vue";
@@ -28,7 +31,8 @@ const components = [
 	dmIcon,
 	dmForm,
 	dmFormItem,
-	dmRate
+	dmRate,
+	dmToast
 ];
 
 export function install(app: App) {
@@ -52,7 +56,9 @@ export {
 	dmIcon,
 	dmForm,
 	dmFormItem,
-	dmRate
+	dmRate,
+	dmToast,
+	showToast
 };
 
 declare module "vue" {
@@ -70,5 +76,6 @@ declare module "vue" {
 		DmForm: typeof dmForm;
 		DmFormItem: typeof dmFormItem;
 		DmRate: typeof dmRate;
+		DmToast: typeof dmToast;
 	}
 }

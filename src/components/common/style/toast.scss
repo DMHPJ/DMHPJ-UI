@@ -1,0 +1,39 @@
+@use "./var.scss" as *;
+
+.dm-toast {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+
+	& .dm-toast-content {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+    user-select: none;
+		text-align: center;
+		align-content: center;
+		transition: all .2s;
+		min-width: var(--dm-toast-content-min-width, 5.5rem);
+		max-width: var(--dm-toast-content-max-width, 70vw);
+		min-height: var(--dm-toast-content-min-width, 5.5rem);
+		background-color: var(--dm-toast-background-color, $dm-overlay-color);
+		color: var(--dm-toast-color, $dm-background-color-default);
+		padding: var(--dm-toast-padding, 1rem);
+		border-radius: var(--dm-toast-border-radius, 1rem);
+
+		& .dm-toast-icon {
+			font-size: var(--dm-toast-icon-size, 2.25rem);
+			color: var(--dm-toast-icon-color, $dm-background-color-default);
+		}
+
+		& .dm-toast-text {
+			font-size: var(--dm-toast-text-size, 0.88rem);
+			line-height: var(--dm-toast-text-line-height, 1.25rem);
+			color: var(--dm-toast-text-color, $dm-background-color-default);
+		}
+	}
+}

@@ -52,13 +52,20 @@ export interface Rules {
 }
 
 export interface FormParamObj {
+	modelValue: stringKeyObject;
+	rules: Rules;
 	labelWidth: string|number;
 	labelAlign: string;
-	rules: Rules;
 	readonly: boolean;
 	disabled: boolean;
 }
 
 export interface FormInstance extends FormParamObj {
 	validate: Function;
+}
+
+export interface ShowToastOption {
+	message: string,
+	icon?: string,
+	duration?: number
 }
