@@ -92,11 +92,17 @@
 		<dm-card title="兜帽虎皮卷的评分" shadow>
 			<dm-rate v-model="testRef.rate" allow-half></dm-rate>
 		</dm-card>
+		<dm-card title="兜帽虎皮卷的提示" shadow>
+			<dm-button @click="testRef.toast1 = true">成功提示</dm-button>
+			<dm-button @click="testRef.toast2 = true">失败提示</dm-button>
+			<dm-toast v-model="testRef.toast1" icon="cicle-selected" message="成功提示" :duration="2000"></dm-toast>
+			<dm-toast v-model="testRef.toast2" icon="cicle-close" message="失败提示" :duration="2000"></dm-toast>
+			<dm-button @click="testToast">测试JS</dm-button>
+		</dm-card>
 		<dm-card title="兜帽虎皮卷的表单" shadow>
 			<dm-button @click="testFormButton">testFormButton</dm-button>
-			<dm-form ref="testForm" :rules="testRef.rules">
-				<dm-form-item label="姓名" prop="name">
-				</dm-form-item>
+			<dm-form ref="testForm" v-model="testRef.form" :rules="testRef.rules">
+				<dm-form-item label="姓名" prop="name"> </dm-form-item>
 			</dm-form>
 		</dm-card>
 		<dm-popup v-model:show="testRef.showPopup" position="bottom">
@@ -109,7 +115,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import { FormInstance } from "./components/common/ts/interface";
+import { FormInstance, RuleItem } from "./components/common/ts/interface";
+import showToast from "./components/toast/showToast";
+
+const testValiFunc = (rules: RuleItem, value: any, callback: Function) => {
+	if (value === "") callback(new Error("必填项"));
+};
 
 const testData = [
 	{
@@ -180,21 +191,38 @@ const testRef = ref({
 	checked: false,
 	checkList: ["选中且禁用", "选中", "按钮-选中", "边框-选中", "边框-选中且禁用"],
 	showPopup: false,
-	rules: {
-		name: [{required: true}]
+	form: {
+		name: "",
 	},
-	rate: 3
+	rules: {
+		name: [
+			{ required: true, message: "test", trigger: "blur" },
+			{ validator: testValiFunc, trigger: "blur" },
+		],
+	},
+	rate: 3,
+	toast1: false,
+	toast2: false,
 });
 const testForm = ref<FormInstance | null>(null);
 
 const testFormButton = () => {
-	console.log(testForm);
-	testForm.value?.validate();
-}
+	testForm.value?.validate((valid: boolean) => {
+		console.log(valid);
+	});
+};
 
 const testCheckbox = (val: boolean, event: Event) => {
 	console.log("App Handle Checkbox Change", val, event);
 };
+
+const testToast = () => {
+	showToast({
+		message: "我是提示",
+		icon: "cicle-close",
+		duration: 2000,
+	})
+}
 
 watch(
 	() => testRef.value.checkList,
@@ -203,9 +231,7 @@ watch(
 	}
 );
 
-
-onMounted(() => {
-});
+onMounted(() => {});
 </script>
 
 <style scoped>
@@ -220,7 +246,7 @@ onMounted(() => {
 	height: 100vh;
 }
 
-.card-body{
+.card-body {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 1rem;
