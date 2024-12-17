@@ -56,7 +56,7 @@ export default defineComponent({
 			isLimitExceeded: false,
 		});
 
-		const { dispatch } = useEmitter();
+		const { dispatchUpward } = useEmitter();
 		const _checkboxGroup = inject("dmCheckboxGroup") as ComponentInternalInstance;
 		const isGroup = computed(() => !!_checkboxGroup);
 
@@ -80,7 +80,7 @@ export default defineComponent({
 					}
 
 					if (!data.value.isLimitExceeded) {
-						dispatch("DmCheckboxGroup", "input", [val]);
+						dispatchUpward("DmCheckboxGroup", "input", [val]);
 					}
 				}
 				if (typeof val === "boolean") {

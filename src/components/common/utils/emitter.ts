@@ -33,7 +33,7 @@ function mainBroadcast(
 export function useEmitter() {
 	const instance = getCurrentInstance();
 
-	const dispatch = (componentName: string, eventName: string, params: any) => {
+	const dispatchUpward = (componentName: string, eventName: string, params: any) => {
 		let parent = instance?.parent || instance?.root || null;
 		let name = parent?.type.name;
 
@@ -50,9 +50,11 @@ export function useEmitter() {
 		}
 	};
 
-	function broadcast(componentName: string, eventName: string, params: any[]) {
-		mainBroadcast.call(instance as unknown as CustomComponent, componentName, eventName, params);
-	}
+	const dispatchDownward = () => {};
 
-	return { dispatch, broadcast };
+	const broadcast = (componentName: string, eventName: string, params: any[]) => {
+		mainBroadcast.call(instance as unknown as CustomComponent, componentName, eventName, params);
+	};
+
+	return { dispatchUpward, dispatchDownward, broadcast };
 }

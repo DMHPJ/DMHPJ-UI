@@ -26,7 +26,7 @@ export default defineComponent({
 			() => props.size || _dmFormItemSize.value || (inject("$ELEMENT") as any)?.size
 		);
 
-		// const { dispatch } = useEmitter();
+		// const { dispatchUpward } = useEmitter();
 
 		// const valueRef = toRef(props, 'modelValue');
 		// console.log(valueRef);
@@ -35,7 +35,7 @@ export default defineComponent({
 		// 	console.log("groupWatcher");
 		// 	console.log("groupWatcher", value);
 
-		// 	dispatch("DmFormItem", "dm.form.change", [value]);
+		// 	dispatchUpward("DmFormItem", "dm.form.change", [value]);
 		// });
 
 		const input = (newValue: any) => {
