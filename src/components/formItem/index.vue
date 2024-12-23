@@ -26,6 +26,7 @@ export default defineComponent({
 	props: {
 		label: { type: String, default: "" },
 		prop: { type: String, default: "" },
+		rule: { type: Array<RuleItem>, default: null },
 	},
 	setup(props, { expose }) {
 		const valiItem: Ref<Error | false> = ref(false);
@@ -64,8 +65,10 @@ export default defineComponent({
 		};
 
 		const getRules = () => {
-			if (!formParam) return [];
-			const ruleList: Array<RuleItem> = formParam.rules[props.prop];
+			if (!formParam && !props.rule) return [];
+			const ruleList: Array<RuleItem> = [];
+			if (formParam) ruleList.push(...formParam.rules[props.prop]);
+			if (props.rule) ruleList.push(...props.rule);
 			return ruleList || [];
 		};
 
