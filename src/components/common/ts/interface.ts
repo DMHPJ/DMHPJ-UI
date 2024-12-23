@@ -58,6 +58,7 @@ export interface FormParamObj {
 	labelAlign: string;
 	readonly: boolean;
 	disabled: boolean;
+	registerFormItem: Function;
 }
 
 export interface FormInstance extends FormParamObj {

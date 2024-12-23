@@ -16,9 +16,10 @@
 	</div>
 </template>
 <script lang="ts">
-import { defineComponent, inject, onMounted } from "vue";
+import { defineComponent, getCurrentInstance, inject, onMounted, ref, Ref } from "vue";
 import { injectFormParam } from "../common/ts/injectType";
 import { RuleItem } from "../common/ts/interface";
+import { isNull } from "../common/utils/validate";
 
 export default defineComponent({
 	name: "DmFormItem",
@@ -27,8 +28,9 @@ export default defineComponent({
 		prop: { type: String, default: "" },
 	},
 	setup(props, { expose }) {
+		const valiItem: Ref<Error | false> = ref(false);
 		const formParam = inject(injectFormParam);
-
+		const instance = getCurrentInstance();
 		const isRequired = () => {
 			const index = formParam?.rules?.[props.prop]?.findIndex((item) => item.required);
 			return typeof index === "number" && index > -1;
@@ -43,37 +45,49 @@ export default defineComponent({
 			};
 		};
 
-		const testVali = (error: Error) => {
-			return new Promise((resolve, reject) => {
-				if (error) {
-					resolve(false);
-				} else {
-					reject(true);
-				}
-			});
+		const validateItemCallback = (error?: Error) => {
+			valiItem.value = error || false;
+			if (error) return error;
+			else return false;
+		};
+
+		const validateItem = async (item: RuleItem) => {
+			valiItem.value = false;
+
+			if (typeof item.validator === "function") {
+				await item.validator(item, formParam?.modelValue[props.prop], validateItemCallback);
+				return valiItem.value;
+			} else if (item.required && isNull(formParam?.modelValue[props.prop])) {
+				return true;
+			}
+			return false;
 		};
 
 		const getRules = () => {
-			if (!formParam) return {};
+			if (!formParam) return [];
 			const ruleList: Array<RuleItem> = formParam.rules[props.prop];
-			ruleList.forEach((item) => {
-				if (typeof item.validator === "function") {
-					item.validator(item, formParam.model[props.prop], testVali);
-				}
-			});
-			return formParam.rules[props.prop] || [];
+			return ruleList || [];
 		};
 
-		const validate = () => {
-			const rules = getRules();
+		const validate = async () => {
+			const ruleList = getRules();
+			const results = await Promise.all(
+				ruleList.map(async (item) => {
+					return await validateItem(item);
+				})
+			);
+			const valid = results.some((result) => result);
+			return valid;
 		};
 
 		onMounted(() => {
 			if (!formParam) return console.error("formItem需在form组件内");
-			console.log(formParam.labelAlign, props);
+			if (formParam && instance) {
+				formParam.registerFormItem(instance);
+			}
 		});
 
-		expose({validate})
+		expose({ validate });
 
 		return { isRequired, getStyle, validate };
 	},

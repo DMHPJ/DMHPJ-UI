@@ -2,8 +2,9 @@
 	<slot ref="formItem"></slot>
 </template>
 <script lang="ts">
-import { defineComponent, provide, Ref, ref } from "vue";
+import { ComponentInternalInstance, defineComponent, provide, Ref, ref } from "vue";
 import { injectFormParam } from "../common/ts/injectType";
+import { isNull } from "../common/utils/validate";
 
 export default defineComponent({
 	name: "DmForm",
@@ -16,45 +17,21 @@ export default defineComponent({
 		disabled: { type: Boolean, default: false },
 	},
 	setup(props) {
-		const valiItem: Ref<Error | false> = ref(false);
-		provide(injectFormParam, props);
-
-		const validateItemCallback = (error?: Error) => {
-			valiItem.value = error || false;
-			if (error) return error;
-			else return false;
+		const formItems: Ref<ComponentInternalInstance[]> = ref([]);
+		const registerFormItem = (instance: ComponentInternalInstance) => {
+			formItems.value.push(instance);
 		};
 
-		const validateItem = async (key: string) => {
-			const rules = props.rules[key];
-			for (const item of rules) {
-				valiItem.value = false;
-
-				if (typeof item.validator === "function") {
-					await item.validator(item, props.modelValue["name"], validateItemCallback);
-					return valiItem.value;
-				}
-			}
-			return false;
-		};
+		provide(injectFormParam, { ...props, registerFormItem });
 
 		const validate = async (callback: Function) => {
+			if (isNull(formItems.value)) return callback(false);
 			const results = await Promise.all(
-				Object.keys(props.rules).map(async (item) => {
-					return await validateItem(item);
-				})
+				formItems.value.map((item) => item?.exposed?.validate())
 			);
-			console.log(results);
-
-			const valid = results.some((result) => result);
+			const valid = results.some((result: boolean) => result);
 			return callback(valid);
 		};
-
-		// onMounted(() => {
-		//   if (slots.default) {
-		//     formItems.value = slots.default().map(item => item.componentInstance);
-		//   }
-		// });
 		return { validate };
 	},
 });
