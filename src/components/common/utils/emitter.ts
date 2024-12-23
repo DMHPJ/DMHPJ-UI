@@ -1,6 +1,5 @@
 // src/composables/useEmitter.ts
 import { getCurrentInstance, ComponentPublicInstance } from "vue";
-import { stringKeyObject } from "../ts/interface";
 
 interface CustomComponent extends ComponentPublicInstance {
 	$children: ComponentPublicInstance[];
@@ -44,9 +43,8 @@ export function useEmitter() {
 				name = parent?.type.name;
 			}
 		}
-
-		if (parent && typeof (parent?.proxy as stringKeyObject)[eventName] === "function") {
-			(parent?.proxy as stringKeyObject)[eventName](...params);
+		if (parent && typeof parent?.exposed?.[eventName] === "function") {
+			parent?.exposed?.[eventName](...params);
 		}
 	};
 

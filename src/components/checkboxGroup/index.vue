@@ -18,7 +18,7 @@ export default defineComponent({
 		textColor: { type: String, default: "#333" },
 	},
 	emits: ["update:modelValue"],
-	setup(props, { emit }) {
+	setup(props, { emit, expose }) {
 		const instance = getCurrentInstance();
 		provide("dmCheckboxGroup", instance);
 		const _dmFormItemSize = computed(() => (inject("dmFormItem") as any)?.dmFormItemSize);
@@ -42,10 +42,9 @@ export default defineComponent({
 			emit("update:modelValue", newValue);
 		};
 
-		return {
-			checkboxGroupSize,
-			input
-		};
+		expose({ input });
+
+		return { checkboxGroupSize };
 	},
 });
 </script>
