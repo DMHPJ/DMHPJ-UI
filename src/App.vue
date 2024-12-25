@@ -99,11 +99,17 @@
 			<dm-toast v-model="testRef.toast2" icon="cicle-close" message="失败提示" :duration="2000"></dm-toast>
 			<dm-button @click="testToast">测试JS</dm-button>
 		</dm-card>
+		<dm-card title="兜帽虎皮卷的输入框" shadow>
+			<dm-input style="margin-bottom: 1rem" placeholder="请输入"></dm-input>
+			<dm-search placeholder="请输入Search"></dm-search>
+		</dm-card>
 		<dm-card title="兜帽虎皮卷的表单" shadow>
-			<dm-button @click="testFormButton">testFormButton</dm-button>
 			<dm-form ref="testForm" v-model="testRef.form" :rules="testRef.rules">
-				<dm-form-item label="姓名" prop="name"> </dm-form-item>
+				<dm-form-item label="姓名" prop="name">
+					<dm-input v-model="testRef.form.name" placeholder="请输入姓名" clearable></dm-input>
+				</dm-form-item>
 			</dm-form>
+			<dm-button style="margin-top: 1rem;" @click="testFormButton">testFormButton</dm-button>
 		</dm-card>
 		<dm-popup v-model:show="testRef.showPopup" position="bottom">
 			<div style="text-align: center; height: 25vh">我是弹出层内容</div>
@@ -119,7 +125,8 @@ import { FormInstance, RuleItem } from "./components/common/ts/interface";
 import showToast from "./components/toast/showToast";
 
 const testValiFunc = (rules: RuleItem, value: any, callback: Function) => {
-	if (value === "") callback(new Error("必填项"));
+	if (value === "1") callback(new Error("必填项"));
+	else callback();
 };
 
 const testData = [
@@ -208,7 +215,7 @@ const testForm = ref<FormInstance | null>(null);
 
 const testFormButton = () => {
 	testForm.value?.validate((valid: boolean) => {
-		console.log(valid);
+		console.log(valid, testRef.value.form);
 	});
 };
 

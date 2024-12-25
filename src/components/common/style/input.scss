@@ -1,0 +1,25 @@
+@use "./var.scss" as *;
+
+@mixin font() {
+	font-size: var(--dm-input-font-size, 0.88rem);
+	font-weight: var(--dm-input-font-weight, 400);
+	line-height: var(--dm-input-font-height, 1.03rem);
+}
+
+.dm-input {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	> input {
+		@include font();
+		color: var(--dm-input-text-color, $dm-primary-text-color);
+		border: none;
+		outline: none;
+	}
+
+	> input::placeholder {
+		@include font();
+		color: var(--dm-input-placeholder-color, $dm-tertiary-text-color);
+	}
+}

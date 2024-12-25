@@ -12,6 +12,8 @@ import dmForm from "./components/form/index.vue";
 import dmFormItem from "./components/formItem/index.vue";
 import dmRate from "./components/rate/index.vue";
 import dmToast from "./components/toast/index.vue";
+import dmInput from "./components/input/index.vue";
+import dmSearch from "./components/search/index.vue";
 
 import showToast from "./components/toast/showToast";
 
@@ -32,7 +34,9 @@ const components = [
 	dmForm,
 	dmFormItem,
 	dmRate,
-	dmToast
+	dmToast,
+	dmInput,
+	dmSearch
 ];
 
 export function install(app: App) {
@@ -58,6 +62,8 @@ export {
 	dmFormItem,
 	dmRate,
 	dmToast,
+	dmInput,
+	dmSearch,
 	showToast
 };
 
@@ -77,5 +83,7 @@ declare module "vue" {
 		DmFormItem: typeof dmFormItem;
 		DmRate: typeof dmRate;
 		DmToast: typeof dmToast;
+		DmInput: typeof dmInput;
+		DmSearch: typeof dmSearch;
 	}
 }
