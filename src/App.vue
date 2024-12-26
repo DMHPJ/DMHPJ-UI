@@ -45,7 +45,11 @@
 			</dm-card>
 		</div>
 		</dm-card> -->
-		<dm-card title="兜帽虎皮卷的卡片" shadow width="100%">
+		<dm-card title="兜帽虎皮卷的单元格" shadow>
+			<dm-cell title="普通单元格" content="Test Cell"></dm-cell>
+			<dm-cell title="箭头单元格" titleIcon="good" arrow @rightClick="testCellClick"></dm-cell>
+		</dm-card>
+		<dm-card title="兜帽虎皮卷的卡片" shadow>
 			<template #header>
 				<div>兜帽虎皮卷的按钮</div>
 			</template>
@@ -109,7 +113,11 @@
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的输入框" shadow>
 			<dm-input style="margin-bottom: 1rem" placeholder="请输入"></dm-input>
-			<dm-search v-model="testRef.search" placeholder="请输入Search" @search="testSearch" clearable></dm-search>
+			<dm-search
+				v-model="testRef.search"
+				placeholder="请输入Search"
+				@search="testSearch"
+				clearable></dm-search>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的表单" shadow>
 			<dm-form ref="testForm" v-model="testRef.form" :rules="testRef.rules">
@@ -218,7 +226,7 @@ const testRef = ref({
 	rate: 3,
 	toast1: false,
 	toast2: false,
-	search: ""
+	search: "",
 });
 const testForm = ref<FormInstance | null>(null);
 
@@ -242,6 +250,10 @@ const testToast = () => {
 
 const testSearch = () => {
 	console.log("testSearch", testRef.value.search);
+};
+
+const testCellClick = () => {
+	console.log("testCellClick");
 };
 
 watch(

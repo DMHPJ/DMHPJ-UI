@@ -1,4 +1,5 @@
 import dmCard from "./components/card/index.vue";
+import dmCell from "./components/cell/index.vue";
 import dmButton from "./components/button/index.vue";
 import dmTable from "./components/table/index.vue";
 import dmTableColumn from "./components/tableColumn/index.vue";
@@ -22,6 +23,7 @@ import type { App } from "vue";
 
 const components = [
 	dmCard,
+	dmCell,
 	dmButton,
 	dmTable,
 	dmTableColumn,
@@ -49,6 +51,7 @@ export default { install };
 
 export {
 	dmCard,
+	dmCell,
 	dmButton,
 	dmTable,
 	dmTableColumn,
@@ -85,5 +88,6 @@ declare module "vue" {
 		DmToast: typeof dmToast;
 		DmInput: typeof dmInput;
 		DmSearch: typeof dmSearch;
+		DmCell: typeof dmCell;
 	}
 }

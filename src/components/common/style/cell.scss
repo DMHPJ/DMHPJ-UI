@@ -9,6 +9,7 @@
   padding-block: var(--dm-cell-padding-block, 0.75rem);
   
 	& .dm-cell-left {
+		display: flex;
 		flex-shrink: 0;
 		color: var(--dm-cell-title-text-color, $dm-secondary-text-color);
 		font-weight: var(--dm-cell-title-font-weight, 500);
@@ -18,8 +19,14 @@
 		flex-grow: 1;
 		word-wrap: break-word;
 		white-space: pre-line;
-    text-align: right;
+		display: flex;
+		justify-content: flex-end;
 		color: var(--dm-cell-title-content-color, $dm-primary-text-color);
 		font-weight: var(--dm-cell-content-font-weight, 400);
 	}
+}
+
+.dm-cell-border{
+	@extend .dm-cell;
+	border-bottom: var(--dm-cell-border-bottom, 0.02rem solid $dm-dividing-line-color);
 }
