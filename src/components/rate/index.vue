@@ -5,18 +5,19 @@
 			v-for="(item, index) in Number(count)"
 			:key="index"
 			@click="handleClick($event, index)">
-			<dm-icon class="dm-rate-icon-full" v-if="item <= modelValue" :name="icon"></dm-icon>
+			<dmIcon class="dm-rate-icon-full" v-if="item <= modelValue" :name="icon"></dmIcon>
 			<div class="dm-rate-icon-halt" v-else>
-				<dm-icon class="dm-rate-icon-empty" :name="voidIcon"></dm-icon>
-				<dm-icon
+				<dmIcon class="dm-rate-icon-empty" :name="voidIcon"></dmIcon>
+				<dmIcon
 					class="dm-rate-icon-color"
 					:style="{ width: setHaltWidth(item) }"
-					:name="icon"></dm-icon>
+					:name="icon"></dmIcon>
 			</div>
 		</div>
 	</div>
 </template>
 <script lang="ts">
+import dmIcon from "../icon/index.vue"
 import { computed, defineComponent } from "vue";
 
 export default defineComponent({
@@ -69,7 +70,7 @@ export default defineComponent({
 			return emit("update:modelValue", index + 1);
 		};
 
-		return { setHaltWidth, handleClick, rateStyle };
+		return { setHaltWidth, handleClick, rateStyle, dmIcon };
 	},
 });
 </script>

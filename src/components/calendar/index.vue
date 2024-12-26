@@ -5,11 +5,11 @@
 				<div class="dm-calendar-title">{{ title }}</div>
 			</slot>
 			<div class="dm-calendar-year-month">
-				<dm-icon name="double-arrow-left" @click="handleYearChange(-1)"></dm-icon>
-				<dm-icon name="arrow-left" @click="handleMonthChange(-1)"></dm-icon>
+				<dmIcon name="double-arrow-left" @click="handleYearChange(-1)"></dmIcon>
+				<dmIcon name="arrow-left" @click="handleMonthChange(-1)"></dmIcon>
 				<div>{{ calendarObj.selectedYear + "年" + calendarObj.selectedMonth + "月" }}</div>
-				<dm-icon name="arrow-right" @click="handleMonthChange(1)"></dm-icon>
-				<dm-icon name="double-arrow-right" @click="handleYearChange(1)"></dm-icon>
+				<dmIcon name="arrow-right" @click="handleMonthChange(1)"></dmIcon>
+				<dmIcon name="double-arrow-right" @click="handleYearChange(1)"></dmIcon>
 			</div>
 		</div>
 		<div class="dm-calendar-content">
@@ -41,10 +41,11 @@
 				</div>
 			</div>
 		</div>
-		<dm-button v-if="showConfirm" block @click="handleConfirm">确定</dm-button>
+		<dmButton v-if="showConfirm" block @click="handleConfirm">确定</dmButton>
 	</div>
 </template>
 <script lang="ts">
+import dmIcon from "../icon/index.vue";
 import dmButton from "../button/index.vue";
 import { defineComponent, onMounted, PropType, Ref, ref } from "vue";
 import dmDay from "../common/utils/date";
@@ -61,7 +62,6 @@ export default defineComponent({
 		title: { type: String, default: "日历" },
 		showConfirm: { type: Boolean, default: true },
 	},
-	components: { dmButton },
 	setup(props, { emit }) {
 		const selectedList: Ref<Array<Date>> = ref([]);
 		const currentDmDay = dmDay.dmDay(props.currentDay);
@@ -227,6 +227,8 @@ export default defineComponent({
 		});
 
 		return {
+			dmIcon,
+			dmButton,
 			getWeekList,
 			handleClickDate,
 			getClass,

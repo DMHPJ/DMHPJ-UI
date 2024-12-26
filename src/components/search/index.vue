@@ -1,6 +1,6 @@
 <template>
 	<div class="dm-search">
-		<dmIcon v-if="showIcon" :style="{ color: iconColor }" :name="icon"></dmIcon>
+		<dmIcon v-if="showIcon" :color="iconColor" :name="icon"></dmIcon>
 		<dmInput
 			v-model="inputValue"
 			:placeholder="placeholder"
@@ -10,7 +10,7 @@
 		<dmIcon
 			v-if="clearable && inputValue"
       class="dm-search-clear"
-			:style="{ color: clearIconColor }"
+			:color="clearIconColor"
 			:name="clearIcon"
       @click="handleClear"></dmIcon>
 	</div>
