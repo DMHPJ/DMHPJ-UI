@@ -8,6 +8,7 @@
 			:maxlength="maxLength"
 			:readonly="readonly"
 			:disabled="disabled"
+			@keyup.enter="handleEnter"
 			@change="handleChange"
       @focus="handleFocus"
       @blur="handleBlur" />
@@ -22,7 +23,7 @@ export default defineComponent({
 	props: {
 		modelValue: { type: [String, Number], default: null },
 		type: { type: String as PropType<FieldType>, default: "text" },
-		placeholder: { type: String, default: null },
+		placeholder: { type: String, default: "请输入内容" },
 		minLength: { type: [String, Number], default: null },
 		maxLength: { type: [String, Number], default: null },
 		min: { type: Number, default: null },
@@ -46,7 +47,11 @@ export default defineComponent({
     const handleBlur = (event: Event) => {
       emit("blur", event);
     }
-		return { handleChange, handleFocus, handleBlur };
+
+		const handleEnter = (event: Event) => {
+			emit("enter", event);
+		};
+		return { handleChange, handleFocus, handleBlur, handleEnter };
 	},
 });
 </script>

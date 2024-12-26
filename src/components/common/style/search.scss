@@ -2,12 +2,17 @@
 
 .dm-search {
 	display: flex;
+	column-gap: var(--dm-search-column-gap, 0.25rem);
 	background-color: var(--dm-search-background-color, $dm-background-color-default);
 	border-radius: var(--dm-search-border-radius, 1.2rem);
 	padding: var(--dm-search-padding, 0.75rem 0.7rem);
-	box-shadow: 0rem 0rem 0.5rem 0.13rem rgba(41, 101, 255, 0.06);
+	box-shadow: var(--dm-search-box-shadow, 0rem 0rem 0.5rem 0.13rem $dm-shadow-color);
 
 	--dm-input-font-size: 0.75rem;
 	--dm-input-font-height: 0.88rem;
-  --dm-input-placeholder-color: #C1D6FF;
+	--dm-input-placeholder-color: #C1D6FF;
+
+	& .dm-search-clear {
+		cursor: pointer;
+	}
 }

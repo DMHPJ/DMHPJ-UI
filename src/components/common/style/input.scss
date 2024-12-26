@@ -7,6 +7,7 @@
 }
 
 .dm-input {
+  flex: 1;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -16,6 +17,7 @@
 		color: var(--dm-input-text-color, $dm-primary-text-color);
 		border: none;
 		outline: none;
+    width: 100%;
 	}
 
 	> input::placeholder {
