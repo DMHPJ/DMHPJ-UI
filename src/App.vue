@@ -97,8 +97,11 @@
 			<dm-rate v-model="testRef.rate" allow-half></dm-rate>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的提示" shadow>
-			<dm-button @click="testRef.toast1 = true">成功提示</dm-button>
-			<dm-button @click="testRef.toast2 = true">失败提示</dm-button>
+			<div class="button-group">
+				<dm-button @click="testRef.toast1 = true">成功提示</dm-button>
+				<dm-button @click="testRef.toast2 = true">失败提示</dm-button>
+				<dm-button @click="testToast">测试JS</dm-button>
+			</div>
 			<dm-toast
 				v-model="testRef.toast1"
 				icon="cicle-selected"
@@ -109,10 +112,9 @@
 				icon="cicle-close"
 				message="失败提示"
 				:duration="2000"></dm-toast>
-			<dm-button @click="testToast">测试JS</dm-button>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的输入框" shadow>
-			<dm-input style="margin-bottom: 1rem" placeholder="请输入"></dm-input>
+			<dm-input style="margin-bottom: 1rem" v-model="testRef.search" type="email" placeholder="请输入"></dm-input>
 			<dm-search
 				v-model="testRef.search"
 				placeholder="请输入Search"

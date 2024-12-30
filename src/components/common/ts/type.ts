@@ -6,10 +6,5 @@ export type FieldType =
 	| "number"
 	| "email"
 	| "tel"
-	| "url"
-	| "search"
-	| "date"
-	| "time"
-	| "datetime"
-	| "month"
-	| "week";
+	| "url";
+export type ValidationFunction = (text: string) => boolean;

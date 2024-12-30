@@ -11,6 +11,24 @@ const isNull = (val: any): boolean => {
 	return val === null || val === undefined;
 };
 
+const isUrl = (text: string) => {
+	const reg = /^(http|https):\/\/[^ "]+$/;
+	return reg.test(text);
+};
+
+const isEmail = (text: string) => {
+	const reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+	return reg.test(text);
+};
+
+const isTelephone = (text: string) => {
+	const reg = /^1[3456789]\d{9}$/;
+	return reg.test(text);
+};
+
 export {
   isNull,
+	isUrl,
+	isEmail,
+	isTelephone
 }

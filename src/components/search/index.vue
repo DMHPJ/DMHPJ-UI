@@ -4,6 +4,8 @@
 		<dmInput
 			v-model="inputValue"
 			:placeholder="placeholder"
+			:readonly="readonly"
+			:disabled="disabled"
 			@enter="handleEnter"
 			@focus="handleFocus"
 			@blur="handleBlur"></dmInput>

@@ -1,5 +1,5 @@
 <template>
-	<div class="dm-input">
+	<div class="dm-input" :class="{ 'dm-input-error': validError }">
 		<input
 			:type="type"
 			:value="modelValue"
@@ -10,13 +10,17 @@
 			:disabled="disabled"
 			@keyup.enter="handleEnter"
 			@change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur" />
+			@focus="handleFocus"
+			@blur="handleBlur" />
+		<div v-if="validError" class="dm-input-message">
+			{{ validMsg }}
+		</div>
 	</div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, readonly } from "vue";
-import { FieldType } from "../common/ts/type";
+import { defineComponent, PropType, ref } from "vue";
+import { FieldType, ValidationFunction } from "../common/ts/type";
+import { isEmail, isTelephone, isUrl } from "../common/utils/validate";
 
 export default defineComponent({
 	name: "DmInput",
@@ -33,25 +37,59 @@ export default defineComponent({
 		clearIcon: { type: String, default: "cicle-close" },
 		readonly: { type: Boolean, default: false },
 		disabled: { type: Boolean, default: false },
+		message: { type: String, default: null },
 	},
 	setup(props, { emit }) {
+		const validMsg = ref(props.message);
+		const validError = ref(false);
+		type ShouldValid = "email" | "tel" | "url";
+		const validType = (value: string) => {
+			if (props.type === "number") {
+				const number = Number(value);
+				if (isNaN(number)) {
+					validMsg.value = props.message ? props.message : "请输入数字";
+					validError.value = true;
+					return 0;
+				}
+				return number;
+			}
+
+			const validationMap: Record<ShouldValid, ValidationFunction> = {
+				email: isEmail,
+				tel: isTelephone,
+				url: isUrl,
+			};
+
+			if (props.type in validationMap && !validationMap[props.type as ShouldValid](value)) {
+				validMsg.value = props.message ? props.message : "格式错误";
+				validError.value = true;
+			} else {
+				validMsg.value = "";
+				validError.value = false;
+			}
+
+			return value;
+		};
+
 		const handleChange = (event: Event) => {
 			emit("change", (event.target as HTMLInputElement).value, props.modelValue);
 			emit("update:modelValue", (event.target as HTMLInputElement).value);
 		};
 
-    const handleFocus = (event: Event) => {
-      emit("focus", event);
-    }
+		const handleFocus = (event: Event) => {
+			emit("focus", event);
+		};
 
-    const handleBlur = (event: Event) => {
-      emit("blur", event);
-    }
+		const handleBlur = (event: Event) => {
+			validType((event.target as HTMLInputElement).value);
+			emit("blur", event);
+		};
 
 		const handleEnter = (event: Event) => {
 			emit("enter", event);
 		};
-		return { handleChange, handleFocus, handleBlur, handleEnter };
+
+		return { validMsg, validError, handleChange, handleFocus, handleBlur, handleEnter };
 	},
 });
 </script>

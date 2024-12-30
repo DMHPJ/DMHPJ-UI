@@ -7,6 +7,9 @@
 }
 
 .dm-input {
+	display: flex;
+  align-items: center;
+	justify-content: space-between;
   flex: 1;
 	appearance: none;
 	-webkit-appearance: none;
@@ -14,14 +17,29 @@
 
 	> input {
 		@include font();
+		flex: 1;
 		color: var(--dm-input-text-color, $dm-primary-text-color);
 		border: none;
 		outline: none;
-    width: 100%;
 	}
+
+  > input:read-only {
+    cursor: default;
+  }
+
+  > input:disabled {
+    cursor: not-allowed;
+    color: var(--dm-input-disabled-text-color, $dm-tertiary-text-color)
+  }
 
 	> input::placeholder {
 		@include font();
 		color: var(--dm-input-placeholder-color, $dm-tertiary-text-color);
 	}
+}
+
+.dm-input-error{
+	color: var(--dm-input-error-message-text-color, $dm-red-color);
+	font-size: var(--dm-input-error-message-font-size, 0.75rem);
+	// border: 0.02rem solid var(--dm-input-error-color, $dm-red-color);
 }
