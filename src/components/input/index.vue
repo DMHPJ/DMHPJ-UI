@@ -44,14 +44,9 @@ export default defineComponent({
 		const validError = ref(false);
 		type ShouldValid = "email" | "tel" | "url";
 		const validType = (value: string) => {
-			if (props.type === "number") {
-				const number = Number(value);
-				if (isNaN(number)) {
-					validMsg.value = props.message ? props.message : "请输入数字";
-					validError.value = true;
-					return 0;
-				}
-				return number;
+			if (props.type === "number" && isNaN(Number(value))) {
+				validMsg.value = props.message ? props.message : "请输入数字";
+				validError.value = true;
 			}
 
 			const validationMap: Record<ShouldValid, ValidationFunction> = {
