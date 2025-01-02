@@ -94,7 +94,7 @@
 			<dm-calendar type="multiple" title="请选择日期"></dm-calendar>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的时间选择器" shadow>
-			<dm-date-picker minDate="2013-01-01" :maxDate="new Date()"></dm-date-picker>
+			<dm-date-picker minDate="2023-01-01" :maxDate="new Date()"></dm-date-picker>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的评分" shadow>
 			<dm-rate v-model="testRef.rate" allow-half></dm-rate>
@@ -146,6 +146,8 @@ import { FormInstance, RuleItem } from "./components/common/ts/interface";
 import showToast from "./components/toast/showToast";
 
 const testValiFunc = (rules: RuleItem, value: any, callback: Function) => {
+	console.log(rules);
+	
 	if (value === "1") callback(new Error("必填项"));
 	else callback();
 };
