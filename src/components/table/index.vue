@@ -1,5 +1,5 @@
 <template>
-	<div class="dm-table">
+	<div class="dm-table" :style="{ '--dm-table-cell-text-align': align }">
 		<div class="dm-table-header">
 			<div v-for="(column, index) in columns" :key="index" :style="setStyle(column)">
 				{{ column.label }}
@@ -32,6 +32,7 @@ export default defineComponent({
 			required: true,
 			default: () => [],
 		},
+		align: { type: String, default: "center" }
 	},
 	setup() {
 		const slots = useSlots();
