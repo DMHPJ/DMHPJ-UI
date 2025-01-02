@@ -64,7 +64,7 @@ import buttonApi from "/api/button"
 
 组件可选的传入参数
 
-<dm-table :data="buttonApi.props">
+<dm-table :data="buttonApi.props" align="left">
   <dm-table-column prop="name" label="参数"></dm-table-column>
   <dm-table-column prop="desc" label="说明" width="320"></dm-table-column>
   <dm-table-column prop="type" label="类型">
@@ -83,7 +83,7 @@ import buttonApi from "/api/button"
 
 组件提供了下列回调事件
 
-<dm-table :data="buttonApi.events">
+<dm-table :data="buttonApi.events" align="left">
   <dm-table-column prop="name" label="事件名" width="80"></dm-table-column>
   <dm-table-column prop="desc" label="说明" width="400"></dm-table-column>
   <dm-table-column prop="type" label="回调参数">
@@ -97,14 +97,14 @@ import buttonApi from "/api/button"
 
 组件提供了下列 CSS 变量，可用于自定义样式
 
-<dm-table :data="buttonApi.style">
+<dm-table :data="buttonApi.style" align="left">
   <dm-table-column prop="name" label="名称"></dm-table-column>
-  <dm-table-column prop="type" label="默认值">
+  <dm-table-column prop="type" label="默认值" width="160">
     <template #cell="{ row }">
 			<em>{{ row.default }}</em>
     </template>
   </dm-table-column>
-  <dm-table-column prop="desc" label="描述">
+  <dm-table-column prop="desc" label="描述" width="120">
     <template #cell="{ row }">
 			<em>{{ row.desc ? row.desc : '-' }}</em>
     </template>
