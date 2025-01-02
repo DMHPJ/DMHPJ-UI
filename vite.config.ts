@@ -8,7 +8,7 @@ export default defineConfig({
 			entry: "./src/index.ts",
 			name: "dmhpj-ui",
 			formats: ["cjs", "es", "umd"],
-			fileName: (format) => `dmhpj-ui.${format}.js`,
+			fileName: (format) => `dmhpj-ui.${format}`,
 		},
 		rollupOptions: {
 			external: ["vue"],
