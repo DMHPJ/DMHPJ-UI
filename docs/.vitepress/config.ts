@@ -3,7 +3,6 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
 	title: "🍰兜帽虎皮卷的UI组件库",
 	description: "This is DMHPJ's UI",
-  base: "/docs/",
 	themeConfig: {
 		nav: [
 			{ text: "首页", link: "/" },
