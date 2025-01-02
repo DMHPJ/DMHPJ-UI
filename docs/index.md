@@ -15,10 +15,10 @@ hero:
       link: https://github.com/DMHPJ/DMHPJ-UI
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: datePicker组件开发中
+    details: 进度20%，核心逻辑、样式、动画等开发中
+  - title: input组件优化
+    details: input组件与form组件联动问题处理
+  - title: 整体优化
+    details: 部分组件思路与后续冲突，整体优化中
 ---
