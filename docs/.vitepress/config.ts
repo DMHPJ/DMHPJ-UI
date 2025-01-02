@@ -9,7 +9,7 @@ export default defineConfig({
 	themeConfig: {
 		nav: [
 			{ text: "首页", link: "/" },
-			{ text: "说明文档", link: "/markdown-examples" },
+			{ text: "说明文档", link: "/guide/getting-start" },
 		],
 
 		sidebar: [
@@ -17,7 +17,7 @@ export default defineConfig({
 				text: "开发指南",
 				items: [
 					{ text: "快速开始", link: "/guide/getting-start" },
-					{ text: "查看说明文档", link: "/api-examples" },
+					// { text: "查看说明文档", link: "/api-examples" },
 				],
 			},
       {
@@ -27,7 +27,6 @@ export default defineConfig({
         ],
       }
 		],
-
 		socialLinks: [{ icon: "github", link: "https://github.com/DMHPJ/DMHPJ-UI" }],
 	},
 });
