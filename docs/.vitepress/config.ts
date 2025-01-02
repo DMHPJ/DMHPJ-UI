@@ -1,28 +1,30 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "DMHPJ's UI",
-  description: "This is DMHPJ's UI",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
+	title: "🍰兜帽虎皮卷的UI组件库",
+	description: "This is DMHPJ's UI",
+	themeConfig: {
+		nav: [
+			{ text: "首页", link: "/" },
+			{ text: "说明文档", link: "/markdown-examples" },
+		],
 
-    sidebar: [
+		sidebar: [
+			{
+				text: "开发指南",
+				items: [
+					{ text: "快速开始", link: "/guide/getting-start" },
+					{ text: "查看说明文档", link: "/api-examples" },
+				],
+			},
       {
-        text: 'Examples',
+        text: "基础组件",
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
+          { text: "Button 按钮", link: "/guide/basic/button" },
+        ],
       }
-    ],
+		],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+		socialLinks: [{ icon: "github", link: "https://github.com/DMHPJ/DMHPJ-UI" }],
+	},
+});

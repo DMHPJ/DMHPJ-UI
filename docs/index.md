@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "DMHPJ's UI"
-  text: "This is DMHPJ's UI"
-  tagline: My great project tagline
+  name: "兜帽虎皮卷的UI组件库"
+  text: "DMHPJ's UI"
+  tagline: 更多组件待开发中...
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 快速开始
+      link: /guide/getting-start
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 前往项目地址
+      link: https://github.com/DMHPJ/DMHPJ-UI
 
 features:
   - title: Feature A
@@ -22,4 +22,3 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
