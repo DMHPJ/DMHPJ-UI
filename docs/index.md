@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /DMHPJ-UI/guide/getting-start
+      link: /guide/getting-start
     - theme: alt
       text: 前往项目地址
       link: https://github.com/DMHPJ/DMHPJ-UI
