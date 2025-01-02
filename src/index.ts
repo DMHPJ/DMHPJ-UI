@@ -15,6 +15,7 @@ import dmRate from "./components/rate/index.vue";
 import dmToast from "./components/toast/index.vue";
 import dmInput from "./components/input/index.vue";
 import dmSearch from "./components/search/index.vue";
+import dmDatePicker from "./components/datePicker/index.vue";
 
 import showToast from "./components/toast/showToast";
 
@@ -38,7 +39,8 @@ const components = [
 	dmRate,
 	dmToast,
 	dmInput,
-	dmSearch
+	dmSearch,
+	dmDatePicker
 ];
 
 export function install(app: App) {
@@ -67,6 +69,7 @@ export {
 	dmToast,
 	dmInput,
 	dmSearch,
+	dmDatePicker,
 	showToast
 };
 
@@ -89,5 +92,6 @@ declare module "vue" {
 		DmInput: typeof dmInput;
 		DmSearch: typeof dmSearch;
 		DmCell: typeof dmCell;
+		DmDatePicker: typeof dmDatePicker;
 	}
 }

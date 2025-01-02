@@ -1,0 +1,25 @@
+@use "./var.scss" as *;
+
+.dm-date-picker {
+	height: var(--dm-date-picker-box-height, 20rem);
+
+	& .dm-date-picker-content {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		text-align: center;
+		height: 100%;
+
+		> div {
+			overflow: auto;
+		}
+
+		& .dm-date-picker-item {
+			padding-block: 0.5rem;
+			border-bottom: 0.02rem solid #eeeeee;
+		}
+
+		& .dm-date-picker-item-active {
+			padding-block: 1rem;
+		}
+	}
+}

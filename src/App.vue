@@ -93,6 +93,9 @@
 		<dm-card title="兜帽虎皮卷的日历" shadow>
 			<dm-calendar type="multiple" title="请选择日期"></dm-calendar>
 		</dm-card>
+		<dm-card title="兜帽虎皮卷的时间选择器" shadow>
+			<dm-date-picker minDate="2013-01-01" :maxDate="new Date()"></dm-date-picker>
+		</dm-card>
 		<dm-card title="兜帽虎皮卷的评分" shadow>
 			<dm-rate v-model="testRef.rate" allow-half></dm-rate>
 		</dm-card>

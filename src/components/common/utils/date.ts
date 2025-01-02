@@ -87,6 +87,9 @@ const dayNameList: dayList[] = [
 const MIN_YEAR = 1900;
 const MAX_YEAR = 9999;
 
+const defaultMinDate = new Date("1900-01-01");
+const defaultMaxDate = new Date("9999-12-31");
+
 const today = new Date();
 
 // 辅助函数：验证并转换月份和年份
@@ -218,4 +221,6 @@ export default {
 	isAfter,
 	dayNameList,
 	monthNameList,
+	defaultMinDate,
+	defaultMaxDate,
 };
