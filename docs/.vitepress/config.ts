@@ -11,7 +11,11 @@ export default defineConfig({
 			{ text: "首页", link: "/" },
 			{ text: "说明文档", link: "/guide/getting-start" },
 		],
-
+		logo: undefined,
+		outline: {
+			label: "页面导航",
+			level: "deep",
+		},
 		sidebar: [
 			{
 				text: "开发指南",
