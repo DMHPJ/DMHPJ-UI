@@ -1,38 +1,40 @@
 <script setup lang="ts">
-import buttonApi from "/api/button"
+import cellApi from "/api/cell"
 </script>
 
-# Button 按钮
+# Cell 单元格
 
-按钮用于触发一个操作，如提交表单。
+单元格用于展示一个行信息，也常与其他组件结合使用
 
 ## 代码演示
 
-### 默认按钮
+### 基础使用
 
-引入后不进行额外设置时的默认按钮
+引入后不进行额外设置时的单元格，默认带有下边框
 
-<dm-button>默认按钮</dm-button>
+<dm-cell title="基础单元格" content="Default Cell"></dm-cell>
 
 ```vue
-<dm-button>默认按钮</dm-button>
+<dm-cell title="基础单元格" content="Default Cell"></dm-cell>
 ```
 
-### 朴素按钮
+### 展示图标
 
-设置 `plain` 属性将按钮转为朴素按钮，朴素按钮仅有边框及文字，没有背景色
+设置 `titleIcon` 属性后单元格会显示左侧图标，可以结合 `titleIconColor` 属性设置图标颜色
 
-<dm-button plain>朴素按钮</dm-button>
+<dm-cell title="箭头单元格" titleIcon="good" content="Icon Cell"></dm-cell>
 
 ```vue
-<dm-button plain>朴素按钮</dm-button>
+<dm-cell title="箭头单元格" titleIcon="good" content="Icon Cell"></dm-cell>
 ```
 
 ### 块级按钮
 
 设置 `block` 属性将按钮转为块级按钮，块级按钮会占用容器的剩余横向空间
 
-<dm-button block>块级按钮</dm-button>
+<div style="width: 40%">
+  <dm-button block>块级按钮</dm-button>
+</div>
 
 ```vue
 <dm-button block>块级按钮</dm-button>
@@ -61,7 +63,7 @@ import buttonApi from "/api/button"
 ### Props
 
 组件可选的传入参数
-
+<!-- 
 <dm-table :data="buttonApi.props" align="left">
   <dm-table-column prop="name" label="参数"></dm-table-column>
   <dm-table-column prop="desc" label="说明" width="320"></dm-table-column>
@@ -107,4 +109,4 @@ import buttonApi from "/api/button"
 			<em>{{ row.desc ? row.desc : '-' }}</em>
     </template>
   </dm-table-column>
-</dm-table>
+</dm-table> -->
