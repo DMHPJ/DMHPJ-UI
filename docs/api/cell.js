@@ -69,6 +69,17 @@ const events = [
   },
 ];
 
+const slot = [
+  {
+    name: "title",
+    desc: "单元格左侧标题插槽",
+  },
+  {
+    name: "content",
+    desc: "单元格右侧内容插槽",
+  },
+];
+
 const style = [
   {
     name: "--dm-cell-font-size",
@@ -115,5 +126,6 @@ const style = [
 export default {
   props,
   events,
+  slot,
   style
 }

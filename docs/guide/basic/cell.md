@@ -127,6 +127,15 @@ import cellApi from "/api/cell"
   </dm-table-column>
 </dm-table>
 
+### Slot
+
+组件提供了下列插槽
+
+<dm-table :data="cardApi.slot" align="left">
+  <dm-table-column prop="name" label="插槽名" width="80"></dm-table-column>
+  <dm-table-column prop="desc" label="说明"></dm-table-column>
+</dm-table>
+
 ### Style
 
 组件提供了下列 CSS 变量，可用于自定义样式
