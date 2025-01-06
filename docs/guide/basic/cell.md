@@ -22,40 +22,74 @@ import cellApi from "/api/cell"
 
 设置 `titleIcon` 属性后单元格会显示左侧图标，可以结合 `titleIconColor` 属性设置图标颜色
 
-<dm-cell title="箭头单元格" titleIcon="good" content="Icon Cell"></dm-cell>
+<dm-cell 
+  title="箭头单元格" 
+  titleIcon="good" 
+  titleIconColor="#2965FF" 
+  content="Icon Cell"></dm-cell>
 
 ```vue
-<dm-cell title="箭头单元格" titleIcon="good" content="Icon Cell"></dm-cell>
+<dm-cell 
+  title="箭头单元格" 
+  titleIcon="good" 
+  titleIconColor="#2965FF" 
+  content="Icon Cell"></dm-cell>
 ```
 
-### 块级按钮
+### 箭头单元格
 
-设置 `block` 属性将按钮转为块级按钮，块级按钮会占用容器的剩余横向空间
+设置 `arrow` 属性将单元格转为箭头单元格，常用于示意存在可跳转链接的单元格，也可以结合 `icon` 属性自定义所展示的图标，结合 `iconColor` 属性设置图标颜色
 
-<div style="width: 40%">
-  <dm-button block>块级按钮</dm-button>
-</div>
+<dm-cell title="箭头单元格" content="Arrow Cell" arrow></dm-cell>
+<dm-cell 
+  title="自定义箭头单元格" 
+  content="Arrow Cell" 
+  arrow 
+  icon="good" 
+  iconColor="#2965FF"></dm-cell>
 
 ```vue
-<dm-button block>块级按钮</dm-button>
+<dm-cell title="箭头单元格" content="Arrow Cell" arrow></dm-cell>
+<dm-cell
+	title="自定义箭头单元格"
+	content="Arrow Cell"
+	arrow
+	icon="good"
+	iconColor="#2965FF"></dm-cell>
 ```
 
-### 按钮状态
+### 纯净单元格
 
-支持设置 `readonly` 属性或 `disabled` 属性以控制按钮是否可用
+支持设置 `border` 属性以关闭单元格下边框
 
-<div style="display: flex; gap: 1rem;">
-  <dm-button readonly>只读按钮</dm-button>
-  <dm-button readonly plain>简约只读按钮</dm-button>
-  <dm-button disabled>禁用按钮</dm-button>
-  <dm-button plain disabled>简约禁用按钮</dm-button>
-</div>
+<dm-cell title="纯净单元格" content="Purity Cell" :border="false"></dm-cell>
 
 ```vue
-<dm-button readonly>只读按钮</dm-button>
-<dm-button readonly plain>简约只读按钮</dm-button>
-<dm-button disabled>禁用按钮</dm-button>
-<dm-button plain disabled>简约禁用按钮</dm-button>
+<dm-cell title="纯净单元格" content="Purity Cell" :border="false"></dm-cell>
+```
+
+### 使用插槽
+
+若以上用法不能满足你的需求，可以使用插槽来自定义内容。
+
+<dm-cell title="使用插槽" content="Use Slot">
+	<template #title>
+		标题插槽
+	</template>
+	<template #content>
+		内容插槽
+	</template>
+</dm-cell>
+
+```vue
+<dm-cell title="使用插槽" content="Use Slot">
+	<template #title>
+		标题插槽
+	</template>
+	<template #content>
+		内容插槽
+	</template>
+</dm-cell>
 ```
 
 ## API
@@ -63,8 +97,8 @@ import cellApi from "/api/cell"
 ### Props
 
 组件可选的传入参数
-<!-- 
-<dm-table :data="buttonApi.props" align="left">
+
+<dm-table :data="cellApi.props" align="left">
   <dm-table-column prop="name" label="参数"></dm-table-column>
   <dm-table-column prop="desc" label="说明" width="320"></dm-table-column>
   <dm-table-column prop="type" label="类型">
@@ -83,7 +117,7 @@ import cellApi from "/api/cell"
 
 组件提供了下列回调事件
 
-<dm-table :data="buttonApi.events" align="left">
+<dm-table :data="cellApi.events" align="left">
   <dm-table-column prop="name" label="事件名" width="80"></dm-table-column>
   <dm-table-column prop="desc" label="说明" width="400"></dm-table-column>
   <dm-table-column prop="type" label="回调参数">
@@ -97,7 +131,7 @@ import cellApi from "/api/cell"
 
 组件提供了下列 CSS 变量，可用于自定义样式
 
-<dm-table :data="buttonApi.style" align="left">
+<dm-table :data="cellApi.style" align="left">
   <dm-table-column prop="name" label="名称"></dm-table-column>
   <dm-table-column prop="type" label="默认值" width="160">
     <template #cell="{ row }">
@@ -109,4 +143,4 @@ import cellApi from "/api/cell"
 			<em>{{ row.desc ? row.desc : '-' }}</em>
     </template>
   </dm-table-column>
-</dm-table> -->
+</dm-table>
