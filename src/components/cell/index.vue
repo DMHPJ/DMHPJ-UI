@@ -1,7 +1,7 @@
 <template>
 	<div :class="border ? 'dm-cell-border' : 'dm-cell'">
 		<div class="dm-cell-left">
-			<dmIcon v-if="titleIcon" :color="titleIconColor" :name="titleIcon"></dmIcon>
+			<dmIcon v-if="titleIcon" :color="titleIconColor" :name="titleIcon" :size="titleIconSize"></dmIcon>
 			<template v-if="$slots.title">
 				<slot name="title"></slot>
 			</template>
@@ -16,7 +16,7 @@
 			<template v-else>
 				<div>{{ content }}</div>
 			</template>
-			<dmIcon v-if="arrow" :color="iconColor" :name="icon"></dmIcon>
+			<dmIcon v-if="arrow" :color="iconColor" :name="icon" :size="iconSize"></dmIcon>
 		</div>
 	</div>
 </template>
@@ -31,8 +31,10 @@ export default defineComponent({
 		content: { type: String, default: null },
 		titleIcon: { type: String, default: null },
 		titleIconColor: { type: String, default: null },
+		titleIconSize: { type: String, default: "1rem" },
 		icon: { type: String, default: "arrow-right" },
 		iconColor: { type: String, default: null },
+		iconSize: { type: String, default: "1rem" },
 		arrow: { type: Boolean, default: false },
 		border: { type: Boolean, default: true },
 	},

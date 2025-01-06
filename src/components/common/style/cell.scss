@@ -21,7 +21,7 @@
 		white-space: pre-line;
 		display: flex;
 		justify-content: flex-end;
-		color: var(--dm-cell-title-content-color, $dm-primary-text-color);
+		color: var(--dm-cell-content-color, $dm-primary-text-color);
 		font-weight: var(--dm-cell-content-font-weight, 400);
 	}
 }
