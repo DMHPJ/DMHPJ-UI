@@ -40,8 +40,8 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		border-radius: var(--dm-popup-bottom-border-radius, 1rem);
-		padding: var(--dm-popup-bottom-padding, 1.5rem);
+		border-radius: var(--dm-popup-center-border-radius, 1rem);
+		padding: var(--dm-popup-center-padding, 1.5rem);
 	}
 
 	& .dm-popup-bottom {
