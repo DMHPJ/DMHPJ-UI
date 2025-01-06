@@ -131,7 +131,7 @@ import cellApi from "/api/cell"
 
 组件提供了下列插槽
 
-<dm-table :data="cardApi.slot" align="left">
+<dm-table :data="cellApi.slot" align="left">
   <dm-table-column prop="name" label="插槽名" width="80"></dm-table-column>
   <dm-table-column prop="desc" label="说明"></dm-table-column>
 </dm-table>
