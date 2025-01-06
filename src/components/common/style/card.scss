@@ -22,5 +22,9 @@
 }
 
 .dm-card-shadow{
-  box-shadow: 0 0 1rem 0.5rem var(--dm-card-shadow-color, $dm-shadow-color);
+  box-shadow: var(--dm-card-shadow, 0 0 1rem 0.5rem $dm-shadow-color);
+}
+
+.dm-card-border{
+	border: var(--dm-card-border, 0.02rem solid $dm-dividing-line-color);
 }

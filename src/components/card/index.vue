@@ -1,6 +1,6 @@
 <template>
 	<div
-		:class="['dm-card', shadow && 'dm-card-shadow']"
+		:class="['dm-card', shadow && 'dm-card-shadow', border && 'dm-card-border']"
 		:style="{ '--dm-card-width': calcWidth, '--dm-card-height': calcHeight }">
 		<div class="dm-card-header" v-if="title || $slots.header">
 			<slot name="header">
@@ -19,7 +19,8 @@ export default defineComponent({
 	name: "DmCard",
 	props: {
 		title: { type: String, default: "" },
-		shadow: { type: Boolean, default: false },
+		shadow: { type: Boolean, default: true },
+		border: { type: Boolean, default: true },
 		width: { type: [String, Number], default: "auto" },
 		height: { type: [String, Number], default: "auto" },
 	},
