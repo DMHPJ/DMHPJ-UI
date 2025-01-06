@@ -25,9 +25,10 @@ export default defineConfig({
         items: [
           { text: "Button 按钮", link: "/guide/basic/button" },
           { text: "Cell 单元格", link: "/guide/basic/cell" },
-          { text: "Icon 图标", link: "/guide/basic/icon" },
+          { text: "Card 卡片", link: "/guide/basic/card" },
           { text: "Popup 弹出层", link: "/guide/basic/popup" },
           { text: "Toast 轻提示", link: "/guide/basic/toast" },
+          { text: "Icon 图标", link: "/guide/basic/icon" },
         ],
       },
 			{
@@ -39,6 +40,12 @@ export default defineConfig({
           { text: "Calendar 日历", link: "/guide/form/calendar" },
           { text: "Rate 评分", link: "/guide/form/rate" },
         ],
+			},
+			{
+				text: "展示组件",
+				items: [
+					{ text: "Table 表格", link: "/guide/show/table" }
+				]
 			}
 		],
 		socialLinks: [{ icon: "github", link: "https://github.com/DMHPJ/DMHPJ-UI" }],
