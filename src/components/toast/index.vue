@@ -1,7 +1,7 @@
 <template>
 	<div class="dm-toast" v-if="modelValue">
 		<div class="dm-toast-content">
-			<dmIcon class="dm-toast-icon" v-if="icon" :name="icon" :size="iconSize" :color="iconColor"></dmIcon>
+			<DmIcon class="dm-toast-icon" v-if="icon" :name="icon" :size="iconSize" :color="iconColor"></DmIcon>
 			<div class="dm-toast-text">
 				<slot> {{ message }} </slot>
 			</div>

@@ -68,5 +68,7 @@ export interface FormInstance extends FormParamObj {
 export interface ShowToastOption {
 	message: string,
 	icon?: string,
+	iconSize?: string|number,
+	iconColor?: string,
 	duration?: number
 }
