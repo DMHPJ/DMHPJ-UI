@@ -1,7 +1,7 @@
 <template>
 	<div
 		:class="[setClass(), shadow && 'dm-button-shadow']"
-		:style="{ display: block ? 'block' : 'inline-block' }"
+		:style="{ display: (block && type !== 'text') ? 'block' : 'inline-block' }"
 		@click="handleClick">
 		<slot></slot>
 	</div>

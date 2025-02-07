@@ -43,3 +43,10 @@
 .dm-button-shadow{
   box-shadow: 0rem 0rem 0.5rem 0.25rem $dm-shadow-color;
 }
+
+.dm-button-text{
+  font-size: var(--dm-button-font-size, 0.88rem);
+  font-weight: var(--dm-button-font-weight, 500);
+  line-height: var(--dm-button-line-height, 1rem);
+  color: var(--dm-button-text-text-color, $dm-main-color);
+}
