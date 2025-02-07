@@ -1,25 +1,68 @@
 @use "./var.scss" as *;
 
 .dm-date-picker {
+	touch-action: none;
 	height: var(--dm-date-picker-box-height, 20rem);
+
+	& .dm-date-picker-header{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+	}
 
 	& .dm-date-picker-content {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+		position: relative;
 		text-align: center;
 		height: 100%;
 
-		> div {
-			overflow: auto;
+		& .dm-date-picker-column {
+			flex: 1;
+			overflow: hidden;
+			cursor: grab;
+
+			& .dm-date-picker-wrapper {
+				transition-timing-function: cubic-bezier(0.23, 1, 0.68, 1);
+
+				& .dm-date-picker-item {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					height: 1.5rem;
+					padding-block: 0.5rem;
+					color: #999999;
+					// border-bottom: 0.02rem solid #eeeeee;
+				}
+
+				& .dm-date-picker-item-active {
+					color: #333333;
+				}
+			}
 		}
 
-		& .dm-date-picker-item {
-			padding-block: 0.5rem;
+		& .dm-date-picker-hairline {
+			height: 2.5rem;
+			top: 50%;
+			left: 0;
+			right: 0;
+			z-index: 2;
+			pointer-events: none;
+			position: absolute;
+			transform: translateY(-50%);
+			
+		}
+		& .dm-date-picker-hairline::after {
+			box-sizing: border-box;
+			content: " ";
+			pointer-events: none;
 			border-bottom: 0.02rem solid #eeeeee;
-		}
-
-		& .dm-date-picker-item-active {
-			padding-block: 1rem;
+			position: absolute;
+			bottom: 50%;
+			left: -50%;
+			right: -50%;
+			transform: scale(0.5);
 		}
 	}
 }

@@ -45,8 +45,12 @@
 			</dm-card>
 		</div>
 		</dm-card> -->
+		<dm-card>123</dm-card>
 		<dm-card title="兜帽虎皮卷的单元格" shadow>
-			<dm-cell title="普通单元格" content="Test Cell"></dm-cell>
+			<dm-cell title="普通单元格" content="Test Cell">
+				<template #title> 标题插槽 </template>
+				<template #content> 内容插槽 </template>
+			</dm-cell>
 			<dm-cell title="箭头单元格" titleIcon="good" arrow @rightClick="testCellClick"></dm-cell>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的卡片" shadow>
@@ -94,7 +98,12 @@
 			<dm-calendar type="multiple" title="请选择日期"></dm-calendar>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的时间选择器" shadow>
-			<dm-date-picker minDate="2023-01-01" :maxDate="new Date()"></dm-date-picker>
+			<dm-date-picker
+				minDate="2023-01-01"
+				:maxDate="new Date()"
+				:defaultDate="testRef.datePickerValue"
+				v-model:show="testRef.showDatePicker"></dm-date-picker>
+			<dm-button @click="testRef.showDatePicker = !testRef.showDatePicker">TEST showDatePicker</dm-button>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的评分" shadow>
 			<dm-rate v-model="testRef.rate" allow-half></dm-rate>
@@ -113,11 +122,16 @@
 			<dm-toast
 				v-model="testRef.toast2"
 				icon="cicle-close"
+				iconColor="red"
 				message="失败提示"
 				:duration="2000"></dm-toast>
 		</dm-card>
 		<dm-card title="兜帽虎皮卷的输入框" shadow>
-			<dm-input style="margin-bottom: 1rem" v-model="testRef.search" type="email" placeholder="请输入"></dm-input>
+			<dm-input
+				style="margin-bottom: 1rem"
+				v-model="testRef.search"
+				type="email"
+				placeholder="请输入"></dm-input>
 			<dm-search
 				v-model="testRef.search"
 				placeholder="请输入Search"
@@ -147,7 +161,7 @@ import showToast from "./components/toast/showToast";
 
 const testValiFunc = (rules: RuleItem, value: any, callback: Function) => {
 	console.log(rules);
-	
+
 	if (value === "1") callback(new Error("必填项"));
 	else callback();
 };
@@ -221,6 +235,8 @@ const testRef = ref({
 	checked: false,
 	checkList: ["选中且禁用", "选中", "按钮-选中", "边框-选中", "边框-选中且禁用"],
 	showPopup: false,
+	showDatePicker: false,
+	datePickerValue: "2024-10-17",
 	form: {
 		name: "",
 	},
